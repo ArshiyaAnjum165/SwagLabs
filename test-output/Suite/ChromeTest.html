@@ -1,0 +1,535 @@
+<html>
+<head>
+<title>TestNG:  ChromeTest</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>ChromeTest</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>37/0/0</td>
+</tr><tr>
+<td>Started on:</td><td>Fri Oct 09 18:51:42 IST 2026</td>
+</tr>
+<tr><td>Total time:</td><td>217 seconds (217440 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td><b>Attribute(s)</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='HamburgerMenu.LogoutTest.logoutTest()'><b>logoutTest</b><br>Test class: HamburgerMenu.LogoutTest<br/>
+<a href="#Output-1728372612" onClick='toggleBox("Output-1728372612", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1728372612" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1728372612">
+Logout option is displayed<br/>
+User logged out successfully<br/>
+</div>
+</td>
+<td></td>
+<td>3</td>
+<td>HamburgerMenu.LogoutTest@6572421</td></tr>
+<tr>
+<td title='Cart.ContinueShopping_Test.continueShoppingTest()'><b>continueShoppingTest</b><br>Test class: Cart.ContinueShopping_Test<br/>
+<a href="#Output-540501426" onClick='toggleBox("Output-540501426", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-540501426" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-540501426">
+Continue Shopping clicked successfully<br/>
+</div>
+</td>
+<td></td>
+<td>4</td>
+<td>Cart.ContinueShopping_Test@6b81ce95</td></tr>
+<tr>
+<td title='Product.VerifyMenuBarVisible_Test.verifyMenuBarVisibleTest()'><b>verifyMenuBarVisibleTest</b><br>Test class: Product.VerifyMenuBarVisible_Test<br/>
+<a href="#Output-2041553769" onClick='toggleBox("Output-2041553769", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-2041553769" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-2041553769">
+Menu bar is displayed successfully<br/>
+</div>
+</td>
+<td></td>
+<td>1</td>
+<td>Product.VerifyMenuBarVisible_Test@59309333</td></tr>
+<tr>
+<td title='Login.UserLoginWithValidCredentials_Test.userLoginWithValidCredentials_Test()'><b>userLoginWithValidCredentials_Test</b><br>Test class: Login.UserLoginWithValidCredentials_Test<br/>
+<a href="#Output-332464215" onClick='toggleBox("Output-332464215", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-332464215" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-332464215">
+User logged in successfully with valid credentials<br/>
+</div>
+</td>
+<td></td>
+<td>0</td>
+<td>Login.UserLoginWithValidCredentials_Test@245b4bdc</td></tr>
+<tr>
+<td title='Checkout.BackHome_Test.backHomeTest()'><b>backHomeTest</b><br>Test class: Checkout.BackHome_Test<br/>
+<a href="#Output-1098645181" onClick='toggleBox("Output-1098645181", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1098645181" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1098645181">
+Back Home navigation successful<br/>
+</div>
+</td>
+<td></td>
+<td>6</td>
+<td>Checkout.BackHome_Test@6c64cb25</td></tr>
+<tr>
+<td title='Checkout.GeneratePDFOrder_Test.generatePDFOrderTest()'><b>generatePDFOrderTest</b><br>Test class: Checkout.GeneratePDFOrder_Test<br/>
+<a href="#Output-923565253" onClick='toggleBox("Output-923565253", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-923565253" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-923565253">
+Generate PDF order button clicked successfully<br/>
+</div>
+</td>
+<td></td>
+<td>7</td>
+<td>Checkout.GeneratePDFOrder_Test@5b239d7d</td></tr>
+<tr>
+<td title='Product.SortPriceHighToLow_Test.sortPriceHighToLowTest()'><b>sortPriceHighToLowTest</b><br>Test class: Product.SortPriceHighToLow_Test<br/>
+<a href="#Output-2028767654" onClick='toggleBox("Output-2028767654", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-2028767654" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-2028767654">
+Products sorted by price: High to Low successfully<br/>
+</div>
+</td>
+<td></td>
+<td>2</td>
+<td>Product.SortPriceHighToLow_Test@9f116cc</td></tr>
+<tr>
+<td title='Login.UserLoginLogout_Test.userLoginLogout_Test()'><b>userLoginLogout_Test</b><br>Test class: Login.UserLoginLogout_Test<br/>
+<a href="#Output-1912920463" onClick='toggleBox("Output-1912920463", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1912920463" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1912920463">
+User logged in successfully with valid credentials<br/>
+User logged out successfully<br/>
+</div>
+</td>
+<td></td>
+<td>0</td>
+<td>Login.UserLoginLogout_Test@16293aa2</td></tr>
+<tr>
+<td title='HamburgerMenu.ResetAppStateTest.resetAppStateTest()'><b>resetAppStateTest</b><br>Test class: HamburgerMenu.ResetAppStateTest<br/>
+<a href="#Output-1199911115" onClick='toggleBox("Output-1199911115", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1199911115" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1199911115">
+Reset App State option is displayed<br/>
+</div>
+</td>
+<td></td>
+<td>2</td>
+<td>HamburgerMenu.ResetAppStateTest@52bf72b5</td></tr>
+<tr>
+<td title='Product.SortProductsZToA_Test.sortProductsZToATest()'><b>sortProductsZToATest</b><br>Test class: Product.SortProductsZToA_Test<br/>
+<a href="#Output-686350055" onClick='toggleBox("Output-686350055", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-686350055" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-686350055">
+Products sorted from Z to A successfully<br/>
+</div>
+</td>
+<td></td>
+<td>2</td>
+<td>Product.SortProductsZToA_Test@5158b42f</td></tr>
+<tr>
+<td title='Checkout.VerifyThankYouPage_Test.verifyThankYouPageTest()'><b>verifyThankYouPageTest</b><br>Test class: Checkout.VerifyThankYouPage_Test<br/>
+<a href="#Output-598183031" onClick='toggleBox("Output-598183031", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-598183031" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-598183031">
+Thank You page displayed successfully<br/>
+</div>
+</td>
+<td></td>
+<td>5</td>
+<td>Checkout.VerifyThankYouPage_Test@515aebb0</td></tr>
+<tr>
+<td title='Cart.ProductAddedToCart_Test.verifyProductAddedToCart_Test()'><b>verifyProductAddedToCart_Test</b><br>Test class: Cart.ProductAddedToCart_Test<br/>
+<a href="#Output-583765599" onClick='toggleBox("Output-583765599", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-583765599" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-583765599">
+User logged in successfully with valid credentials<br/>
+Product Added successfully<br/>
+</div>
+</td>
+<td></td>
+<td>3</td>
+<td>Cart.ProductAddedToCart_Test@5c5eefef</td></tr>
+<tr>
+<td title='HamburgerMenu.OpenMenuTest.openMenuTest()'><b>openMenuTest</b><br>Test class: HamburgerMenu.OpenMenuTest<br/>
+<a href="#Output-1718792426" onClick='toggleBox("Output-1718792426", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1718792426" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1718792426">
+========== OPEN MENU TEST ==========<br/>
+Hamburger menu opened successfully<br/>
+========== OPEN MENU TEST PASSED ==========<br/>
+</div>
+</td>
+<td></td>
+<td>2</td>
+<td>HamburgerMenu.OpenMenuTest@478190fc</td></tr>
+<tr>
+<td title='HamburgerMenu.AllItemsTest.allItemsTest()'><b>allItemsTest</b><br>Test class: HamburgerMenu.AllItemsTest<br/>
+<a href="#Output-569707820" onClick='toggleBox("Output-569707820", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-569707820" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-569707820">
+========== ALL ITEMS TEST ==========<br/>
+All Items navigation verified successfully<br/>
+</div>
+</td>
+<td></td>
+<td>3</td>
+<td>HamburgerMenu.AllItemsTest@2a798d51</td></tr>
+<tr>
+<td title='HamburgerMenu.CloseMenuTest.closeMenuTest()'><b>closeMenuTest</b><br>Test class: HamburgerMenu.CloseMenuTest<br/>
+<a href="#Output-7508078" onClick='toggleBox("Output-7508078", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-7508078" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-7508078">
+========== CLOSE MENU TEST ==========<br/>
+Hamburger menu closed successfully<br/>
+</div>
+</td>
+<td></td>
+<td>5</td>
+<td>HamburgerMenu.CloseMenuTest@12468a38</td></tr>
+<tr>
+<td title='Footer.Facebook_Test.facebookTest()'><b>facebookTest</b><br>Test class: Footer.Facebook_Test<br/>
+<a href="#Output-933293116" onClick='toggleBox("Output-933293116", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-933293116" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-933293116">
+Facebook link verified successfully<br/>
+</div>
+</td>
+<td></td>
+<td>4</td>
+<td>Footer.Facebook_Test@1aa7ecca</td></tr>
+<tr>
+<td title='Checkout.FillCheckoutDetails_Test.fillCheckoutDetailsTest()'><b>fillCheckoutDetailsTest</b><br>Test class: Checkout.FillCheckoutDetails_Test<br/>
+<a href="#Output-854202039" onClick='toggleBox("Output-854202039", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-854202039" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-854202039">
+Checkout details filled successfully<br/>
+</div>
+</td>
+<td></td>
+<td>3</td>
+<td>Checkout.FillCheckoutDetails_Test@5876a9af</td></tr>
+<tr>
+<td title='Product.SortProductsAToZ_Test.sortProductsAToZTest()'><b>sortProductsAToZTest</b><br>Test class: Product.SortProductsAToZ_Test<br/>
+<a href="#Output-694580932" onClick='toggleBox("Output-694580932", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-694580932" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-694580932">
+Products sorted from A to Z successfully<br/>
+</div>
+</td>
+<td></td>
+<td>2</td>
+<td>Product.SortProductsAToZ_Test@6d763516</td></tr>
+<tr>
+<td title='Cart.OpenCartSection_Test.openCartSection_Test()'><b>openCartSection_Test</b><br>Test class: Cart.OpenCartSection_Test<br/>
+<a href="#Output-1798538641" onClick='toggleBox("Output-1798538641", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1798538641" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1798538641">
+User logged in successfully with valid credentials<br/>
+User successfully navigated to cart section<br/>
+</div>
+</td>
+<td></td>
+<td>0</td>
+<td>Cart.OpenCartSection_Test@2d7275fc</td></tr>
+<tr>
+<td title='Checkout.FinishCheckout_Test.finishCheckoutTest()'><b>finishCheckoutTest</b><br>Test class: Checkout.FinishCheckout_Test<br/>
+<a href="#Output-345893819" onClick='toggleBox("Output-345893819", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-345893819" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-345893819">
+Order completed successfully<br/>
+</div>
+</td>
+<td></td>
+<td>6</td>
+<td>Checkout.FinishCheckout_Test@4a94ee4</td></tr>
+<tr>
+<td title='Product.VerifyAllProducts_Test.verifyAllProductsTest()'><b>verifyAllProductsTest</b><br>Test class: Product.VerifyAllProducts_Test<br/>
+<a href="#Output-1219637204" onClick='toggleBox("Output-1219637204", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1219637204" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1219637204">
+Product count, names, prices and all sorting options verified successfully<br/>
+</div>
+</td>
+<td></td>
+<td>7</td>
+<td>Product.VerifyAllProducts_Test@6b927fb</td></tr>
+<tr>
+<td title='HamburgerMenu.SpinnerTest.spinnerTest()'><b>spinnerTest</b><br>Test class: HamburgerMenu.SpinnerTest<br/>
+<a href="#Output-1220163548" onClick='toggleBox("Output-1220163548", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1220163548" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1220163548">
+Spinner option clicked successfully<br/>
+</div>
+</td>
+<td></td>
+<td>4</td>
+<td>HamburgerMenu.SpinnerTest@399f45b1</td></tr>
+<tr>
+<td title='HamburgerMenu.AboutTest.aboutTest()'><b>aboutTest</b><br>Test class: HamburgerMenu.AboutTest<br/>
+<a href="#Output-118280482" onClick='toggleBox("Output-118280482", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-118280482" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-118280482">
+========== ABOUT TEST ==========<br/>
+About option is displayed successfully<br/>
+========== ABOUT TEST PASSED ==========<br/>
+</div>
+</td>
+<td></td>
+<td>2</td>
+<td>HamburgerMenu.AboutTest@6ae5aa72</td></tr>
+<tr>
+<td title='Cart.Checkout_Test.checkoutTest()'><b>checkoutTest</b><br>Test class: Cart.Checkout_Test<br/>
+<a href="#Output-495984416" onClick='toggleBox("Output-495984416", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-495984416" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-495984416">
+Checkout button clicked successfully<br/>
+</div>
+</td>
+<td></td>
+<td>4</td>
+<td>Cart.Checkout_Test@67d48005</td></tr>
+<tr>
+<td title='Footer.LinkedIn_Test.linkedInTest()'><b>linkedInTest</b><br>Test class: Footer.LinkedIn_Test<br/>
+<a href="#Output-42684986" onClick='toggleBox("Output-42684986", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-42684986" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-42684986">
+LinkedIn link verified successfully<br/>
+</div>
+</td>
+<td></td>
+<td>5</td>
+<td>Footer.LinkedIn_Test@7ec7ffd3</td></tr>
+<tr>
+<td title='HamburgerMenu.DynamicCatalogTest.dynamicCatalogTest()'><b>dynamicCatalogTest</b><br>Test class: HamburgerMenu.DynamicCatalogTest<br/>
+<a href="#Output-1653297210" onClick='toggleBox("Output-1653297210", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1653297210" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1653297210">
+URL after clicking Dynamic Catalog: https://www.saucedemo.com/inventory.html<br/>
+Dynamic Catalog option clicked successfully<br/>
+</div>
+</td>
+<td></td>
+<td>3</td>
+<td>HamburgerMenu.DynamicCatalogTest@37afeb11</td></tr>
+<tr>
+<td title='HamburgerMenu.SliderTest.sliderTest()'><b>sliderTest</b><br>Test class: HamburgerMenu.SliderTest<br/>
+<a href="#Output-981876983" onClick='toggleBox("Output-981876983", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-981876983" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-981876983">
+Slider option clicked successfully<br/>
+</div>
+</td>
+<td></td>
+<td>4</td>
+<td>HamburgerMenu.SliderTest@dd8ba08</td></tr>
+<tr>
+<td title='Product.AddProductToCart_Test.addProductToCartTest()'><b>addProductToCartTest</b><br>Test class: Product.AddProductToCart_Test<br/>
+<a href="#Output-1781111709" onClick='toggleBox("Output-1781111709", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1781111709" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1781111709">
+Product added to cart: Sauce Labs Backpack<br/>
+</div>
+</td>
+<td></td>
+<td>2</td>
+<td>Product.AddProductToCart_Test@222545dc</td></tr>
+<tr>
+<td title='Checkout.CancelCheckoutOverview_Test.cancelCheckoutOverviewTest()'><b>cancelCheckoutOverviewTest</b><br>Test class: Checkout.CancelCheckoutOverview_Test<br/>
+<a href="#Output-179497095" onClick='toggleBox("Output-179497095", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-179497095" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-179497095">
+Checkout Overview cancelled successfully<br/>
+</div>
+</td>
+<td></td>
+<td>5</td>
+<td>Checkout.CancelCheckoutOverview_Test@38c6f217</td></tr>
+<tr>
+<td title='Checkout.CancelCheckout_Test.cancelCheckoutTest()'><b>cancelCheckoutTest</b><br>Test class: Checkout.CancelCheckout_Test<br/>
+<a href="#Output-73878928" onClick='toggleBox("Output-73878928", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-73878928" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-73878928">
+Checkout cancelled successfully<br/>
+</div>
+</td>
+<td></td>
+<td>4</td>
+<td>Checkout.CancelCheckout_Test@4cc451f2</td></tr>
+<tr>
+<td title='Footer.X_Test.xTest()'><b>xTest</b><br>Test class: Footer.X_Test<br/>
+<a href="#Output-1648278215" onClick='toggleBox("Output-1648278215", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1648278215" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1648278215">
+X link verified successfully<br/>
+</div>
+</td>
+<td></td>
+<td>4</td>
+<td>Footer.X_Test@6379eb</td></tr>
+<tr>
+<td title='Login.UserLoginWithInvalidUsername_Test.userLoginWithInvalidUsername_Test()'><b>userLoginWithInvalidUsername_Test</b><br>Test class: Login.UserLoginWithInvalidUsername_Test<br/>
+<a href="#Output-889129158" onClick='toggleBox("Output-889129158", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-889129158" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-889129158">
+User didn't logged in with invalid credentials<br/>
+</div>
+</td>
+<td></td>
+<td>0</td>
+<td>Login.UserLoginWithInvalidUsername_Test@72d1ad2e</td></tr>
+<tr>
+<td title='HamburgerMenu.LazyLoadTest.lazyLoadTest()'><b>lazyLoadTest</b><br>Test class: HamburgerMenu.LazyLoadTest<br/>
+<a href="#Output-1307810440" onClick='toggleBox("Output-1307810440", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1307810440" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1307810440">
+Lazy Load option clicked successfully<br/>
+</div>
+</td>
+<td></td>
+<td>4</td>
+<td>HamburgerMenu.LazyLoadTest@7b9a4292</td></tr>
+<tr>
+<td title='HamburgerMenu.ResetAppStateActionTest.resetAppStateActionTest()'><b>resetAppStateActionTest</b><br>Test class: HamburgerMenu.ResetAppStateActionTest<br/>
+<a href="#Output-806609384" onClick='toggleBox("Output-806609384", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-806609384" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-806609384">
+App state reset successfully<br/>
+</div>
+</td>
+<td></td>
+<td>19</td>
+<td>HamburgerMenu.ResetAppStateActionTest@79e2c065</td></tr>
+<tr>
+<td title='Cart.RemoveProductFromCart_Test.removeProductFromCartTest()'><b>removeProductFromCartTest</b><br>Test class: Cart.RemoveProductFromCart_Test<br/>
+<a href="#Output-1470900496" onClick='toggleBox("Output-1470900496", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1470900496" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1470900496">
+Product removed from cart successfully<br/>
+</div>
+</td>
+<td></td>
+<td>4</td>
+<td>Cart.RemoveProductFromCart_Test@595b007d</td></tr>
+<tr>
+<td title='Checkout.FillCheckoutDetails_Negative_Test.fillCheckoutDetailsNegativeTest()'><b>fillCheckoutDetailsNegativeTest</b><br>Test class: Checkout.FillCheckoutDetails_Negative_Test<br/>
+<a href="#Output-1077688833" onClick='toggleBox("Output-1077688833", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1077688833" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1077688833">
+Error message displayed for invalid checkout data<br/>
+</div>
+</td>
+<td></td>
+<td>5</td>
+<td>Checkout.FillCheckoutDetails_Negative_Test@294425a7</td></tr>
+<tr>
+<td title='Product.SortPriceLowToHigh_Test.sortPriceLowToHighTest()'><b>sortPriceLowToHighTest</b><br>Test class: Product.SortPriceLowToHigh_Test<br/>
+<a href="#Output-1401980462" onClick='toggleBox("Output-1401980462", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1401980462" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1401980462">
+Products sorted by price: Low to High successfully<br/>
+</div>
+</td>
+<td></td>
+<td>2</td>
+<td>Product.SortPriceLowToHigh_Test@3a93b025</td></tr>
+</table><p>
+</body>
+</html>
