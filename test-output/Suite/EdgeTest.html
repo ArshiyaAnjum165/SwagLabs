@@ -1,0 +1,732 @@
+<html>
+<head>
+<title>TestNG:  EdgeTest</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>EdgeTest</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>36/0/1</td>
+</tr><tr>
+<td>Started on:</td><td>Sun Oct 11 10:33:59 IST 2026</td>
+</tr>
+<tr><td>Total time:</td><td>304 seconds (304030 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED CONFIGURATIONS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td><b>Attribute(s)</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='ecom.SwagLabs.Product.SortPriceLowToHigh_Test.launchBrowser()'><b>launchBrowser</b><br>Test class: ecom.SwagLabs.Product.SortPriceLowToHigh_Test<br>Parameters: edge</td>
+<td><div><pre>org.openqa.selenium.SessionNotCreatedException: Could not start a new session. Response code 500. Message: session not created
+from chrome not reachable 
+Host info: host: &apos;ARSHIYAANJUM&apos;, ip: &apos;10.130.104.87&apos;
+Build info: version: &apos;4.46.0&apos;, revision: &apos;df5a634 df5a6341cbb5f8f06b836bd595752775627c80dc&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;25.0.2&apos;
+Driver info: org.openqa.selenium.edge.EdgeDriver
+Command: [null, newSession {capabilities=[Capabilities {browserName: MicrosoftEdge, ms:edgeOptions: {args: [], binary: C:\Program Files (x86)\Micr..., extensions: []}}]}]
+Capabilities {browserName: MicrosoftEdge, ms:edgeOptions: {args: [], binary: C:\Program Files (x86)\Micr..., extensions: []}}
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:115)
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:76)
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:62)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:171)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:217)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:175)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:626)
+	at org.openqa.selenium.remote.RemoteWebDriver.startSession(RemoteWebDriver.java:266)
+	at org.openqa.selenium.remote.RemoteWebDriver.&lt;init&gt;(RemoteWebDriver.java:211)
+	at org.openqa.selenium.chromium.ChromiumDriver.&lt;init&gt;(ChromiumDriver.java:108)
+	at org.openqa.selenium.edge.EdgeDriver.&lt;init&gt;(EdgeDriver.java:64)
+	at org.openqa.selenium.edge.EdgeDriver.&lt;init&gt;(EdgeDriver.java:52)
+	at org.openqa.selenium.edge.EdgeDriver.&lt;init&gt;(EdgeDriver.java:48)
+	at org.openqa.selenium.edge.EdgeDriver.&lt;init&gt;(EdgeDriver.java:44)
+	at baseClass.BaseClass.launchBrowser(BaseClass.java:36)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+... Removed 23 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace2072567128", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace2072567128'><pre>org.openqa.selenium.SessionNotCreatedException: Could not start a new session. Response code 500. Message: session not created
+from chrome not reachable 
+Host info: host: &apos;ARSHIYAANJUM&apos;, ip: &apos;10.130.104.87&apos;
+Build info: version: &apos;4.46.0&apos;, revision: &apos;df5a634 df5a6341cbb5f8f06b836bd595752775627c80dc&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;25.0.2&apos;
+Driver info: org.openqa.selenium.edge.EdgeDriver
+Command: [null, newSession {capabilities=[Capabilities {browserName: MicrosoftEdge, ms:edgeOptions: {args: [], binary: C:\Program Files (x86)\Micr..., extensions: []}}]}]
+Capabilities {browserName: MicrosoftEdge, ms:edgeOptions: {args: [], binary: C:\Program Files (x86)\Micr..., extensions: []}}
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:115)
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:76)
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:62)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:171)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:217)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:175)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:626)
+	at org.openqa.selenium.remote.RemoteWebDriver.startSession(RemoteWebDriver.java:266)
+	at org.openqa.selenium.remote.RemoteWebDriver.&lt;init&gt;(RemoteWebDriver.java:211)
+	at org.openqa.selenium.chromium.ChromiumDriver.&lt;init&gt;(ChromiumDriver.java:108)
+	at org.openqa.selenium.edge.EdgeDriver.&lt;init&gt;(EdgeDriver.java:64)
+	at org.openqa.selenium.edge.EdgeDriver.&lt;init&gt;(EdgeDriver.java:52)
+	at org.openqa.selenium.edge.EdgeDriver.&lt;init&gt;(EdgeDriver.java:48)
+	at org.openqa.selenium.edge.EdgeDriver.&lt;init&gt;(EdgeDriver.java:44)
+	at baseClass.BaseClass.launchBrowser(BaseClass.java:36)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:71)
+	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:400)
+	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:333)
+	at org.testng.internal.invokers.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:188)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+	at org.testng.TestRunner.privateRun(TestRunner.java:739)
+	at org.testng.TestRunner.run(TestRunner.java:614)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+	at org.testng.TestNG.runSuites(TestNG.java:1112)
+	at org.testng.TestNG.run(TestNG.java:1079)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+</pre></div></td>
+<td>60</td>
+<td>ecom.SwagLabs.Product.SortPriceLowToHigh_Test@7b2bbc3</td></tr>
+<tr>
+<td title='ecom.SwagLabs.Product.SortPriceLowToHigh_Test.closeBrowser()'><b>closeBrowser</b><br>Test class: ecom.SwagLabs.Product.SortPriceLowToHigh_Test</td>
+<td><div><pre>java.lang.NullPointerException: Cannot invoke &quot;org.openqa.selenium.WebDriver.quit()&quot; because &quot;this.driver&quot; is null
+	at baseClass.BaseClass.closeBrowser(BaseClass.java:46)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+... Removed 24 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace2131440320", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace2131440320'><pre>java.lang.NullPointerException: Cannot invoke &quot;org.openqa.selenium.WebDriver.quit()&quot; because &quot;this.driver&quot; is null
+	at baseClass.BaseClass.closeBrowser(BaseClass.java:46)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:71)
+	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:400)
+	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:333)
+	at org.testng.internal.invokers.TestMethodWorker.invokeAfterClassConfigurations(TestMethodWorker.java:238)
+	at org.testng.internal.invokers.TestMethodWorker.invokeAfterClassMethods(TestMethodWorker.java:223)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:137)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+	at org.testng.TestRunner.privateRun(TestRunner.java:739)
+	at org.testng.TestRunner.run(TestRunner.java:614)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+	at org.testng.TestNG.runSuites(TestNG.java:1112)
+	at org.testng.TestNG.run(TestNG.java:1079)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+</pre></div></td>
+<td>0</td>
+<td>ecom.SwagLabs.Product.SortPriceLowToHigh_Test@7b2bbc3</td></tr>
+</table><p>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td><b>Attribute(s)</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='ecom.SwagLabs.Checkout.FinishCheckout_Test.finishCheckoutTest()'><b>finishCheckoutTest</b><br>Test class: ecom.SwagLabs.Checkout.FinishCheckout_Test<br/>
+<a href="#Output-442705507" onClick='toggleBox("Output-442705507", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-442705507" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-442705507">
+Order completed successfully<br/>
+</div>
+</td>
+<td></td>
+<td>6</td>
+<td>ecom.SwagLabs.Checkout.FinishCheckout_Test@368f2016</td></tr>
+<tr>
+<td title='ecom.SwagLabs.Footer.Facebook_Test.facebookTest()'><b>facebookTest</b><br>Test class: ecom.SwagLabs.Footer.Facebook_Test<br/>
+<a href="#Output-2068388745" onClick='toggleBox("Output-2068388745", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-2068388745" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-2068388745">
+Facebook link verified successfully<br/>
+</div>
+</td>
+<td></td>
+<td>5</td>
+<td>ecom.SwagLabs.Footer.Facebook_Test@a1153bc</td></tr>
+<tr>
+<td title='ecom.SwagLabs.HamburgerMenu.SpinnerTest.spinnerTest()'><b>spinnerTest</b><br>Test class: ecom.SwagLabs.HamburgerMenu.SpinnerTest<br/>
+<a href="#Output-1588017447" onClick='toggleBox("Output-1588017447", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1588017447" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1588017447">
+Spinner option clicked successfully<br/>
+</div>
+</td>
+<td></td>
+<td>4</td>
+<td>ecom.SwagLabs.HamburgerMenu.SpinnerTest@77888435</td></tr>
+<tr>
+<td title='ecom.SwagLabs.HamburgerMenu.LazyLoadTest.lazyLoadTest()'><b>lazyLoadTest</b><br>Test class: ecom.SwagLabs.HamburgerMenu.LazyLoadTest<br/>
+<a href="#Output-1092434782" onClick='toggleBox("Output-1092434782", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1092434782" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1092434782">
+Lazy Load option clicked successfully<br/>
+</div>
+</td>
+<td></td>
+<td>4</td>
+<td>ecom.SwagLabs.HamburgerMenu.LazyLoadTest@41d477ed</td></tr>
+<tr>
+<td title='ecom.SwagLabs.Cart.Checkout_Test.checkoutTest()'><b>checkoutTest</b><br>Test class: ecom.SwagLabs.Cart.Checkout_Test<br/>
+<a href="#Output-1299777981" onClick='toggleBox("Output-1299777981", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1299777981" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1299777981">
+Sauce Labs Backpack added to cart successfully<br/>
+Checkout button clicked successfully<br/>
+</div>
+</td>
+<td></td>
+<td>1</td>
+<td>ecom.SwagLabs.Cart.Checkout_Test@235834f2</td></tr>
+<tr>
+<td title='ecom.SwagLabs.Login.UserLoginWithValidCredentials_Test.userLoginWithValidCredentials_Test()'><b>userLoginWithValidCredentials_Test</b><br>Test class: ecom.SwagLabs.Login.UserLoginWithValidCredentials_Test<br/>
+<a href="#Output-1536728605" onClick='toggleBox("Output-1536728605", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1536728605" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1536728605">
+User logged in successfully with valid credentials<br/>
+</div>
+</td>
+<td></td>
+<td>0</td>
+<td>ecom.SwagLabs.Login.UserLoginWithValidCredentials_Test@34123d65</td></tr>
+<tr>
+<td title='ecom.SwagLabs.HamburgerMenu.OpenMenuTest.openMenuTest()'><b>openMenuTest</b><br>Test class: ecom.SwagLabs.HamburgerMenu.OpenMenuTest<br/>
+<a href="#Output-1544923155" onClick='toggleBox("Output-1544923155", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1544923155" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1544923155">
+========== OPEN MENU TEST ==========<br/>
+Hamburger menu opened successfully<br/>
+========== OPEN MENU TEST PASSED ==========<br/>
+</div>
+</td>
+<td></td>
+<td>2</td>
+<td>ecom.SwagLabs.HamburgerMenu.OpenMenuTest@5fe94a96</td></tr>
+<tr>
+<td title='ecom.SwagLabs.HamburgerMenu.AboutTest.aboutTest()'><b>aboutTest</b><br>Test class: ecom.SwagLabs.HamburgerMenu.AboutTest<br/>
+<a href="#Output-466298113" onClick='toggleBox("Output-466298113", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-466298113" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-466298113">
+========== ABOUT TEST ==========<br/>
+About option is displayed successfully<br/>
+========== ABOUT TEST PASSED ==========<br/>
+</div>
+</td>
+<td></td>
+<td>2</td>
+<td>ecom.SwagLabs.HamburgerMenu.AboutTest@7b98f307</td></tr>
+<tr>
+<td title='ecom.SwagLabs.HamburgerMenu.LogoutTest.logoutTest()'><b>logoutTest</b><br>Test class: ecom.SwagLabs.HamburgerMenu.LogoutTest<br/>
+<a href="#Output-1277577965" onClick='toggleBox("Output-1277577965", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1277577965" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1277577965">
+Logout option is displayed<br/>
+User logged out successfully<br/>
+</div>
+</td>
+<td></td>
+<td>3</td>
+<td>ecom.SwagLabs.HamburgerMenu.LogoutTest@74235045</td></tr>
+<tr>
+<td title='ecom.SwagLabs.HamburgerMenu.AllItemsTest.allItemsTest()'><b>allItemsTest</b><br>Test class: ecom.SwagLabs.HamburgerMenu.AllItemsTest<br/>
+<a href="#Output-506667071" onClick='toggleBox("Output-506667071", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-506667071" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-506667071">
+========== ALL ITEMS TEST ==========<br/>
+All Items navigation verified successfully<br/>
+</div>
+</td>
+<td></td>
+<td>3</td>
+<td>ecom.SwagLabs.HamburgerMenu.AllItemsTest@76505305</td></tr>
+<tr>
+<td title='ecom.SwagLabs.Checkout.VerifyThankYouPage_Test.verifyThankYouPageTest()'><b>verifyThankYouPageTest</b><br>Test class: ecom.SwagLabs.Checkout.VerifyThankYouPage_Test<br/>
+<a href="#Output-1422359433" onClick='toggleBox("Output-1422359433", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1422359433" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1422359433">
+Thank You page displayed successfully<br/>
+</div>
+</td>
+<td></td>
+<td>6</td>
+<td>ecom.SwagLabs.Checkout.VerifyThankYouPage_Test@78691363</td></tr>
+<tr>
+<td title='ecom.SwagLabs.Checkout.CancelCheckoutOverview_Test.cancelCheckoutOverviewTest()'><b>cancelCheckoutOverviewTest</b><br>Test class: ecom.SwagLabs.Checkout.CancelCheckoutOverview_Test<br/>
+<a href="#Output-1214118601" onClick='toggleBox("Output-1214118601", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1214118601" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1214118601">
+Checkout Overview cancelled successfully<br/>
+</div>
+</td>
+<td></td>
+<td>6</td>
+<td>ecom.SwagLabs.Checkout.CancelCheckoutOverview_Test@692f203f</td></tr>
+<tr>
+<td title='ecom.SwagLabs.Cart.RemoveProductFromCart_Test.removeProductFromCartTest()'><b>removeProductFromCartTest</b><br>Test class: ecom.SwagLabs.Cart.RemoveProductFromCart_Test<br/>
+<a href="#Output-1134217920" onClick='toggleBox("Output-1134217920", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1134217920" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1134217920">
+Product removed from cart successfully<br/>
+</div>
+</td>
+<td></td>
+<td>4</td>
+<td>ecom.SwagLabs.Cart.RemoveProductFromCart_Test@1aafa419</td></tr>
+<tr>
+<td title='ecom.SwagLabs.Product.SortProductsZToA_Test.sortProductsZToATest()'><b>sortProductsZToATest</b><br>Test class: ecom.SwagLabs.Product.SortProductsZToA_Test<br/>
+<a href="#Output-686013624" onClick='toggleBox("Output-686013624", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-686013624" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-686013624">
+Products sorted from Z to A successfully<br/>
+</div>
+</td>
+<td></td>
+<td>2</td>
+<td>ecom.SwagLabs.Product.SortProductsZToA_Test@33d512c1</td></tr>
+<tr>
+<td title='ecom.SwagLabs.Product.VerifyAllProducts_Test.verifyAllProductsTest()'><b>verifyAllProductsTest</b><br>Test class: ecom.SwagLabs.Product.VerifyAllProducts_Test<br/>
+<a href="#Output-1014476779" onClick='toggleBox("Output-1014476779", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1014476779" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1014476779">
+Product count, names, prices and all sorting options verified successfully<br/>
+</div>
+</td>
+<td></td>
+<td>7</td>
+<td>ecom.SwagLabs.Product.VerifyAllProducts_Test@515c6049</td></tr>
+<tr>
+<td title='ecom.SwagLabs.HamburgerMenu.SliderTest.sliderTest()'><b>sliderTest</b><br>Test class: ecom.SwagLabs.HamburgerMenu.SliderTest<br/>
+<a href="#Output-782657659" onClick='toggleBox("Output-782657659", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-782657659" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-782657659">
+Slider option clicked successfully<br/>
+</div>
+</td>
+<td></td>
+<td>4</td>
+<td>ecom.SwagLabs.HamburgerMenu.SliderTest@397fbdb</td></tr>
+<tr>
+<td title='ecom.SwagLabs.Cart.ContinueShopping_Test.continueShoppingTest()'><b>continueShoppingTest</b><br>Test class: ecom.SwagLabs.Cart.ContinueShopping_Test<br/>
+<a href="#Output-1594115226" onClick='toggleBox("Output-1594115226", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1594115226" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1594115226">
+Continue Shopping clicked successfully<br/>
+</div>
+</td>
+<td></td>
+<td>4</td>
+<td>ecom.SwagLabs.Cart.ContinueShopping_Test@3270d194</td></tr>
+<tr>
+<td title='ecom.SwagLabs.Product.SortProductsAToZ_Test.sortProductsAToZTest()'><b>sortProductsAToZTest</b><br>Test class: ecom.SwagLabs.Product.SortProductsAToZ_Test<br/>
+<a href="#Output-2126780064" onClick='toggleBox("Output-2126780064", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-2126780064" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-2126780064">
+Products sorted from A to Z successfully<br/>
+</div>
+</td>
+<td></td>
+<td>2</td>
+<td>ecom.SwagLabs.Product.SortProductsAToZ_Test@5656be13</td></tr>
+<tr>
+<td title='ecom.SwagLabs.HamburgerMenu.CloseMenuTest.closeMenuTest()'><b>closeMenuTest</b><br>Test class: ecom.SwagLabs.HamburgerMenu.CloseMenuTest<br/>
+<a href="#Output-1919510349" onClick='toggleBox("Output-1919510349", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1919510349" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1919510349">
+========== CLOSE MENU TEST ==========<br/>
+Hamburger menu closed successfully<br/>
+</div>
+</td>
+<td></td>
+<td>5</td>
+<td>ecom.SwagLabs.HamburgerMenu.CloseMenuTest@14cd1699</td></tr>
+<tr>
+<td title='ecom.SwagLabs.Login.UserLoginWithInvalidUsername_Test.userLoginWithInvalidUsername_Test()'><b>userLoginWithInvalidUsername_Test</b><br>Test class: ecom.SwagLabs.Login.UserLoginWithInvalidUsername_Test<br/>
+<a href="#Output-425729477" onClick='toggleBox("Output-425729477", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-425729477" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-425729477">
+User didn't logged in with invalid credentials<br/>
+</div>
+</td>
+<td></td>
+<td>0</td>
+<td>ecom.SwagLabs.Login.UserLoginWithInvalidUsername_Test@3590fc5b</td></tr>
+<tr>
+<td title='ecom.SwagLabs.Cart.ProductAddedToCart_Test.verifyProductAddedToCart_Test()'><b>verifyProductAddedToCart_Test</b><br>Test class: ecom.SwagLabs.Cart.ProductAddedToCart_Test<br/>
+<a href="#Output-2018241068" onClick='toggleBox("Output-2018241068", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-2018241068" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-2018241068">
+User logged in successfully with valid credentials<br/>
+Product Added successfully<br/>
+</div>
+</td>
+<td></td>
+<td>3</td>
+<td>ecom.SwagLabs.Cart.ProductAddedToCart_Test@4802796d</td></tr>
+<tr>
+<td title='ecom.SwagLabs.HamburgerMenu.ResetAppStateActionTest.resetAppStateActionTest()'><b>resetAppStateActionTest</b><br>Test class: ecom.SwagLabs.HamburgerMenu.ResetAppStateActionTest<br/>
+<a href="#Output-181418232" onClick='toggleBox("Output-181418232", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-181418232" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-181418232">
+App state reset successfully<br/>
+</div>
+</td>
+<td></td>
+<td>19</td>
+<td>ecom.SwagLabs.HamburgerMenu.ResetAppStateActionTest@3e694b3f</td></tr>
+<tr>
+<td title='ecom.SwagLabs.Login.UserLoginLogout_Test.userLoginLogout_Test()'><b>userLoginLogout_Test</b><br>Test class: ecom.SwagLabs.Login.UserLoginLogout_Test<br/>
+<a href="#Output-1713774670" onClick='toggleBox("Output-1713774670", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1713774670" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1713774670">
+User logged in successfully with valid credentials<br/>
+User logged out successfully<br/>
+</div>
+</td>
+<td></td>
+<td>0</td>
+<td>ecom.SwagLabs.Login.UserLoginLogout_Test@1bb5a082</td></tr>
+<tr>
+<td title='ecom.SwagLabs.Product.AddProductToCart_Test.addProductToCartTest()'><b>addProductToCartTest</b><br>Test class: ecom.SwagLabs.Product.AddProductToCart_Test<br/>
+<a href="#Output-1094188959" onClick='toggleBox("Output-1094188959", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1094188959" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1094188959">
+Product added to cart: Sauce Labs Backpack<br/>
+</div>
+</td>
+<td></td>
+<td>2</td>
+<td>ecom.SwagLabs.Product.AddProductToCart_Test@443118b0</td></tr>
+<tr>
+<td title='ecom.SwagLabs.Cart.OpenCartSection_Test.openCartSection_Test()'><b>openCartSection_Test</b><br>Test class: ecom.SwagLabs.Cart.OpenCartSection_Test<br/>
+<a href="#Output-2035431929" onClick='toggleBox("Output-2035431929", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-2035431929" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-2035431929">
+User logged in successfully with valid credentials<br/>
+User successfully navigated to cart section<br/>
+</div>
+</td>
+<td></td>
+<td>0</td>
+<td>ecom.SwagLabs.Cart.OpenCartSection_Test@59474f18</td></tr>
+<tr>
+<td title='ecom.SwagLabs.Checkout.FillCheckoutDetails_Negative_Test.fillCheckoutDetailsNegativeTest()'><b>fillCheckoutDetailsNegativeTest</b><br>Test class: ecom.SwagLabs.Checkout.FillCheckoutDetails_Negative_Test<br/>
+<a href="#Output-1906959131" onClick='toggleBox("Output-1906959131", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1906959131" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1906959131">
+Error message displayed for invalid checkout data<br/>
+</div>
+</td>
+<td></td>
+<td>5</td>
+<td>ecom.SwagLabs.Checkout.FillCheckoutDetails_Negative_Test@55182842</td></tr>
+<tr>
+<td title='ecom.SwagLabs.Footer.LinkedIn_Test.linkedInTest()'><b>linkedInTest</b><br>Test class: ecom.SwagLabs.Footer.LinkedIn_Test<br/>
+<a href="#Output-671785405" onClick='toggleBox("Output-671785405", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-671785405" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-671785405">
+LinkedIn link verified successfully<br/>
+</div>
+</td>
+<td></td>
+<td>5</td>
+<td>ecom.SwagLabs.Footer.LinkedIn_Test@73a1e9a9</td></tr>
+<tr>
+<td title='ecom.SwagLabs.Checkout.FillCheckoutDetails_Test.fillCheckoutDetailsTest()'><b>fillCheckoutDetailsTest</b><br>Test class: ecom.SwagLabs.Checkout.FillCheckoutDetails_Test<br/>
+<a href="#Output-1659364319" onClick='toggleBox("Output-1659364319", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1659364319" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1659364319">
+Checkout details filled successfully<br/>
+</div>
+</td>
+<td></td>
+<td>4</td>
+<td>ecom.SwagLabs.Checkout.FillCheckoutDetails_Test@47eaca72</td></tr>
+<tr>
+<td title='ecom.SwagLabs.HamburgerMenu.DynamicCatalogTest.dynamicCatalogTest()'><b>dynamicCatalogTest</b><br>Test class: ecom.SwagLabs.HamburgerMenu.DynamicCatalogTest<br/>
+<a href="#Output-292307924" onClick='toggleBox("Output-292307924", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-292307924" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-292307924">
+URL after clicking Dynamic Catalog: https://www.saucedemo.com/inventory.html<br/>
+Dynamic Catalog option clicked successfully<br/>
+</div>
+</td>
+<td></td>
+<td>3</td>
+<td>ecom.SwagLabs.HamburgerMenu.DynamicCatalogTest@55141def</td></tr>
+<tr>
+<td title='ecom.SwagLabs.Checkout.CancelCheckout_Test.cancelCheckoutTest()'><b>cancelCheckoutTest</b><br>Test class: ecom.SwagLabs.Checkout.CancelCheckout_Test<br/>
+<a href="#Output-1244881865" onClick='toggleBox("Output-1244881865", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1244881865" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1244881865">
+Checkout cancelled successfully<br/>
+</div>
+</td>
+<td></td>
+<td>5</td>
+<td>ecom.SwagLabs.Checkout.CancelCheckout_Test@48f2bd5b</td></tr>
+<tr>
+<td title='ecom.SwagLabs.Product.VerifyMenuBarVisible_Test.verifyMenuBarVisibleTest()'><b>verifyMenuBarVisibleTest</b><br>Test class: ecom.SwagLabs.Product.VerifyMenuBarVisible_Test<br/>
+<a href="#Output-2071180745" onClick='toggleBox("Output-2071180745", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-2071180745" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-2071180745">
+Menu bar is displayed successfully<br/>
+</div>
+</td>
+<td></td>
+<td>1</td>
+<td>ecom.SwagLabs.Product.VerifyMenuBarVisible_Test@639c2c1d</td></tr>
+<tr>
+<td title='ecom.SwagLabs.Checkout.BackHome_Test.backHomeTest()'><b>backHomeTest</b><br>Test class: ecom.SwagLabs.Checkout.BackHome_Test<br/>
+<a href="#Output-2101996530" onClick='toggleBox("Output-2101996530", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-2101996530" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-2101996530">
+Back Home navigation successful<br/>
+</div>
+</td>
+<td></td>
+<td>6</td>
+<td>ecom.SwagLabs.Checkout.BackHome_Test@4218d6a3</td></tr>
+<tr>
+<td title='ecom.SwagLabs.HamburgerMenu.ResetAppStateTest.resetAppStateTest()'><b>resetAppStateTest</b><br>Test class: ecom.SwagLabs.HamburgerMenu.ResetAppStateTest<br/>
+<a href="#Output-896393489" onClick='toggleBox("Output-896393489", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-896393489" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-896393489">
+Reset App State option is displayed<br/>
+</div>
+</td>
+<td></td>
+<td>2</td>
+<td>ecom.SwagLabs.HamburgerMenu.ResetAppStateTest@65fb9ffc</td></tr>
+<tr>
+<td title='ecom.SwagLabs.Checkout.GeneratePDFOrder_Test.generatePDFOrderTest()'><b>generatePDFOrderTest</b><br>Test class: ecom.SwagLabs.Checkout.GeneratePDFOrder_Test<br/>
+<a href="#Output-772629104" onClick='toggleBox("Output-772629104", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-772629104" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-772629104">
+Generate PDF order button clicked successfully<br/>
+</div>
+</td>
+<td></td>
+<td>7</td>
+<td>ecom.SwagLabs.Checkout.GeneratePDFOrder_Test@4c583ecf</td></tr>
+<tr>
+<td title='ecom.SwagLabs.Product.SortPriceHighToLow_Test.sortPriceHighToLowTest()'><b>sortPriceHighToLowTest</b><br>Test class: ecom.SwagLabs.Product.SortPriceHighToLow_Test<br/>
+<a href="#Output-492446311" onClick='toggleBox("Output-492446311", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-492446311" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-492446311">
+Products sorted by price: High to Low successfully<br/>
+</div>
+</td>
+<td></td>
+<td>3</td>
+<td>ecom.SwagLabs.Product.SortPriceHighToLow_Test@71d44a3</td></tr>
+<tr>
+<td title='ecom.SwagLabs.Footer.X_Test.xTest()'><b>xTest</b><br>Test class: ecom.SwagLabs.Footer.X_Test<br/>
+<a href="#Output-1897752288" onClick='toggleBox("Output-1897752288", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1897752288" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1897752288">
+X link verified successfully<br/>
+</div>
+</td>
+<td></td>
+<td>7</td>
+<td>ecom.SwagLabs.Footer.X_Test@765d7657</td></tr>
+</table><p>
+<table width='100%' border='1' class='invocation-skipped'>
+<tr><td colspan='4' align='center'><b>SKIPPED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td><b>Attribute(s)</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='ecom.SwagLabs.Product.SortPriceLowToHigh_Test.sortPriceLowToHighTest()'><b>sortPriceLowToHighTest</b><br>Test class: ecom.SwagLabs.Product.SortPriceLowToHigh_Test</td>
+<td><div><pre>org.openqa.selenium.SessionNotCreatedException: Could not start a new session. Response code 500. Message: session not created
+from chrome not reachable 
+Host info: host: &apos;ARSHIYAANJUM&apos;, ip: &apos;10.130.104.87&apos;
+Build info: version: &apos;4.46.0&apos;, revision: &apos;df5a634 df5a6341cbb5f8f06b836bd595752775627c80dc&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;25.0.2&apos;
+Driver info: org.openqa.selenium.edge.EdgeDriver
+Command: [null, newSession {capabilities=[Capabilities {browserName: MicrosoftEdge, ms:edgeOptions: {args: [], binary: C:\Program Files (x86)\Micr..., extensions: []}}]}]
+Capabilities {browserName: MicrosoftEdge, ms:edgeOptions: {args: [], binary: C:\Program Files (x86)\Micr..., extensions: []}}
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:115)
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:76)
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:62)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:171)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:217)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:175)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:626)
+	at org.openqa.selenium.remote.RemoteWebDriver.startSession(RemoteWebDriver.java:266)
+	at org.openqa.selenium.remote.RemoteWebDriver.&lt;init&gt;(RemoteWebDriver.java:211)
+	at org.openqa.selenium.chromium.ChromiumDriver.&lt;init&gt;(ChromiumDriver.java:108)
+	at org.openqa.selenium.edge.EdgeDriver.&lt;init&gt;(EdgeDriver.java:64)
+	at org.openqa.selenium.edge.EdgeDriver.&lt;init&gt;(EdgeDriver.java:52)
+	at org.openqa.selenium.edge.EdgeDriver.&lt;init&gt;(EdgeDriver.java:48)
+	at org.openqa.selenium.edge.EdgeDriver.&lt;init&gt;(EdgeDriver.java:44)
+	at baseClass.BaseClass.launchBrowser(BaseClass.java:36)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+... Removed 23 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace264843581", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace264843581'><pre>org.openqa.selenium.SessionNotCreatedException: Could not start a new session. Response code 500. Message: session not created
+from chrome not reachable 
+Host info: host: &apos;ARSHIYAANJUM&apos;, ip: &apos;10.130.104.87&apos;
+Build info: version: &apos;4.46.0&apos;, revision: &apos;df5a634 df5a6341cbb5f8f06b836bd595752775627c80dc&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;25.0.2&apos;
+Driver info: org.openqa.selenium.edge.EdgeDriver
+Command: [null, newSession {capabilities=[Capabilities {browserName: MicrosoftEdge, ms:edgeOptions: {args: [], binary: C:\Program Files (x86)\Micr..., extensions: []}}]}]
+Capabilities {browserName: MicrosoftEdge, ms:edgeOptions: {args: [], binary: C:\Program Files (x86)\Micr..., extensions: []}}
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:115)
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:76)
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:62)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:171)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:217)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:175)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:626)
+	at org.openqa.selenium.remote.RemoteWebDriver.startSession(RemoteWebDriver.java:266)
+	at org.openqa.selenium.remote.RemoteWebDriver.&lt;init&gt;(RemoteWebDriver.java:211)
+	at org.openqa.selenium.chromium.ChromiumDriver.&lt;init&gt;(ChromiumDriver.java:108)
+	at org.openqa.selenium.edge.EdgeDriver.&lt;init&gt;(EdgeDriver.java:64)
+	at org.openqa.selenium.edge.EdgeDriver.&lt;init&gt;(EdgeDriver.java:52)
+	at org.openqa.selenium.edge.EdgeDriver.&lt;init&gt;(EdgeDriver.java:48)
+	at org.openqa.selenium.edge.EdgeDriver.&lt;init&gt;(EdgeDriver.java:44)
+	at baseClass.BaseClass.launchBrowser(BaseClass.java:36)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:71)
+	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:400)
+	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:333)
+	at org.testng.internal.invokers.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:188)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+	at org.testng.TestRunner.privateRun(TestRunner.java:739)
+	at org.testng.TestRunner.run(TestRunner.java:614)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+	at org.testng.TestNG.runSuites(TestNG.java:1112)
+	at org.testng.TestNG.run(TestNG.java:1079)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+</pre></div></td>
+<td>0</td>
+<td>ecom.SwagLabs.Product.SortPriceLowToHigh_Test@7b2bbc3</td></tr>
+</table><p>
+</body>
+</html>

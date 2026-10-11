@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: ecom.SwagLabs.Login.UserLoginLogout_Test
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.569 s -- in ecom.SwagLabs.Login.UserLoginLogout_Test

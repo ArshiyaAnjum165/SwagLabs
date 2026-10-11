@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+  <test thread-count="5" name="Test">
+  <groups>
+<run>
+<include name = "System"></include>
+</run>
+</groups>
+    <classes>
+      <class name="ecom.SwagLabs.Checkout.FinishCheckout_Test"/>
+      <class name="ecom.SwagLabs.Checkout.GeneratePDFOrder_Test"/>
+      <class name="ecom.SwagLabs.Checkout.CancelCheckoutOverview_Test"/>
+      <class name="ecom.SwagLabs.Checkout.CancelCheckout_Test"/>
+      <class name="ecom.SwagLabs.Product.SortPriceLowToHigh_Test"/>
+      <class name="ecom.SwagLabs.Footer.Facebook_Test"/>
+      <class name="ecom.SwagLabs.Cart.RemoveProductFromCart_Test"/>
+      <class name="ecom.SwagLabs.Checkout.FillCheckoutDetails_Test"/>
+      <class name="ecom.SwagLabs.HamburgerMenu.DynamicCatalogTest"/>
+      <class name="ecom.SwagLabs.Checkout.FillCheckoutDetails_Negative_Test"/>
+      <class name="ecom.SwagLabs.Cart.ContinueShopping_Test"/>
+      <class name="ecom.SwagLabs.Cart.Checkout_Test"/>
+      <class name="ecom.SwagLabs.Product.SortProductsAToZ_Test"/>
+      <class name="ecom.SwagLabs.Checkout.BackHome_Test"/>
+      <class name="ecom.SwagLabs.HamburgerMenu.AllItemsTest"/>
+      <class name="ecom.SwagLabs.HamburgerMenu.CloseMenuTest"/>
+      <class name="ecom.SwagLabs.HamburgerMenu.SpinnerTest"/>
+      <class name="ecom.SwagLabs.Footer.LinkedIn_Test"/>
+      <class name="ecom.SwagLabs.Product.SortPriceHighToLow_Test"/>
+      <class name="ecom.SwagLabs.HamburgerMenu.AboutTest"/>
+      <class name="ecom.SwagLabs.Cart.ProductAddedToCart_Test"/>
+      <class name="ecom.SwagLabs.Login.UserLoginWithValidCredentials_Test"/>
+      <class name="ecom.SwagLabs.Cart.OpenCartSection_Test"/>
+      <class name="ecom.SwagLabs.HamburgerMenu.ResetAppStateTest"/>
+      <class name="ecom.SwagLabs.HamburgerMenu.ResetAppStateActionTest"/>
+      <class name="ecom.SwagLabs.Login.UserLoginLogout_Test"/>
+      <class name="ecom.SwagLabs.Checkout.VerifyThankYouPage_Test"/>
+      <class name="ecom.SwagLabs.HamburgerMenu.LazyLoadTest"/>
+      <class name="ecom.SwagLabs.Login.UserLoginWithInvalidUsername_Test"/>
+      <class name="ecom.SwagLabs.HamburgerMenu.SliderTest"/>
+      <class name="ecom.SwagLabs.Product.SortProductsZToA_Test"/>
+      <class name="ecom.SwagLabs.Product.VerifyAllProducts_Test"/>
+      <class name="ecom.SwagLabs.Product.VerifyMenuBarVisible_Test"/>
+      <class name="ecom.SwagLabs.HamburgerMenu.OpenMenuTest"/>
+      <class name="ecom.SwagLabs.Product.AddProductToCart_Test"/>
+      <class name="ecom.SwagLabs.Footer.X_Test"/>
+      <class name="ecom.SwagLabs.HamburgerMenu.LogoutTest"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->
