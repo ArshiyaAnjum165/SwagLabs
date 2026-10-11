@@ -5,20 +5,17 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 import org.apache.poi.EncryptedDocumentException;
+import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
-import org.openqa.selenium.By;
+
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.Test;
 
-<<<<<<< HEAD
-import objRepo.ProductPage;
-=======
-import ObjectRepo.ProductPage;
->>>>>>> 5b7f25652b05f2e95bee78314a22a550c47d4ddd
 import baseClass.BaseClass;
 import objRepo.LoginPage;
+import objRepo.ProductPage;
 import objRepo.CheckoutPage;
 import objRepo.CartPage;
 import objRepo.CheckoutOverviewPage;
@@ -26,77 +23,97 @@ import objRepo.ThankYouPage;
 
 public class BackHome_Test extends BaseClass {
 
-	@Test(groups = { "Integration", "System" })
-	public void backHomeTest() throws EncryptedDocumentException, IOException, InterruptedException {
+    @Test(groups = { "Integration", "System" })
+    public void backHomeTest()
+            throws EncryptedDocumentException, IOException {
 
-		FileInputStream fis = new FileInputStream("./src/test/resources/TestData.xlsx");
-		Workbook wb = WorkbookFactory.create(fis);
+        FileInputStream fis =
+                new FileInputStream("./src/test/resources/TestData.xlsx");
 
-		try {
-			String un = wb.getSheet("LoginCredentials").getRow(1).getCell(0).toString().trim();
-			String pwd = wb.getSheet("LoginCredentials").getRow(1).getCell(1).toString().trim();
-			String productName = wb.getSheet("Sheet1").getRow(1).getCell(0).toString().trim();
+        Workbook wb = WorkbookFactory.create(fis);
 
-			String firstName = wb.getSheet("Sheet2").getRow(1).getCell(0).toString().trim();
-			String lastName = wb.getSheet("Sheet2").getRow(1).getCell(1).toString().trim();
-			String postalCode = wb.getSheet("Sheet2").getRow(1).getCell(2).toString().trim();
+        try {
+            DataFormatter formatter = new DataFormatter();
 
-			// Login
-			LoginPage loginPage = new LoginPage(driver);
-			loginPage.login(un, pwd);
+            String un = formatter.formatCellValue(
+                    wb.getSheet("LoginCredentials")
+                      .getRow(1).getCell(0)).trim();
 
-			Thread.sleep(1000);
+            String pwd = formatter.formatCellValue(
+                    wb.getSheet("LoginCredentials")
+                      .getRow(1).getCell(1)).trim();
 
-			// Add product
-			ProductPage productsPage = new ProductPage(driver);
-<<<<<<< HEAD
-			Assert.assertTrue(loginPage.isProductsPageDisplayed());
-=======
-			Assert.assertTrue(productsPage.isProductsPageDisplayed());
->>>>>>> 5b7f25652b05f2e95bee78314a22a550c47d4ddd
-			productsPage.addProductToCart(productName);
+            String productName = formatter.formatCellValue(
+                    wb.getSheet("Sheet1")
+                      .getRow(1).getCell(0)).trim();
 
-			// Open cart and checkout
-			CartPage hp = new CartPage(driver);
-			hp.getCart().click();
-			CheckoutPage checkoutPage = new CheckoutPage(driver);
-			checkoutPage.clickCheckoutButton();
-			Thread.sleep(1000);
+            String firstName = formatter.formatCellValue(
+                    wb.getSheet("Sheet2")
+                      .getRow(1).getCell(0)).trim();
 
-			// Fill checkout details
-			checkoutPage.getFirstName().sendKeys(firstName);
-			checkoutPage.getLastName().sendKeys(lastName);
-			checkoutPage.getPostalCode().sendKeys(postalCode);
-			checkoutPage.getContinueButton().click();
+            String lastName = formatter.formatCellValue(
+                    wb.getSheet("Sheet2")
+                      .getRow(1).getCell(1)).trim();
 
-			Thread.sleep(1000);
+            String postalCode = formatter.formatCellValue(
+                    wb.getSheet("Sheet2")
+                      .getRow(1).getCell(2)).trim();
 
-			// Finish order
-			CheckoutOverviewPage overviewPage = new CheckoutOverviewPage(driver);
-			overviewPage.getFinishButton().click();
+            // Login
+            LoginPage loginPage = new LoginPage(driver);
+            loginPage.login(un, pwd);
 
-			Thread.sleep(1000);
+            // Verify Products page
+            ProductPage productsPage = new ProductPage(driver);
 
-			// Click Back Home
-			ThankYouPage thankYouPage = new ThankYouPage(driver);
-			Assert.assertEquals(thankYouPage.getThankYouMessage().getText(), "Thank you for your order!");
+            Assert.assertTrue(
+                    productsPage.isProductsPageDisplayed(),
+                    "Products page is not displayed");
 
-			thankYouPage.getBackHomeButton().click();
+            // Add product
+            productsPage.addProductToCart(productName);
 
-			Thread.sleep(1000);
+            // Open cart and checkout
+            CartPage hp = new CartPage(driver);
+            hp.getCart().click();
 
-			// Verify Products page
-<<<<<<< HEAD
-			Assert.assertTrue(loginPage.isProductsPageDisplayed(), "Did not navigate to Products page");
-=======
-			Assert.assertTrue(productsPage.isProductsPageDisplayed(), "Did not navigate to Products page");
->>>>>>> 5b7f25652b05f2e95bee78314a22a550c47d4ddd
+            CheckoutPage checkoutPage = new CheckoutPage(driver);
+            checkoutPage.clickCheckoutButton();
 
-			Reporter.log("Back Home navigation successful", true);
+            // Fill checkout details
+            checkoutPage.getFirstName().sendKeys(firstName);
+            checkoutPage.getLastName().sendKeys(lastName);
+            checkoutPage.getPostalCode().sendKeys(postalCode);
+            checkoutPage.getContinueButton().click();
 
-		} finally {
-			wb.close();
-			fis.close();
-		}
-	}
+            // Finish order
+            CheckoutOverviewPage overviewPage =
+                    new CheckoutOverviewPage(driver);
+
+            overviewPage.getFinishButton().click();
+
+            // Verify order confirmation
+            ThankYouPage thankYouPage = new ThankYouPage(driver);
+
+            Assert.assertEquals(
+                    thankYouPage.getThankYouMessage().getText(),
+                    "Thank you for your order!",
+                    "Order confirmation message is incorrect");
+
+            // Click Back Home
+            thankYouPage.getBackHomeButton().click();
+
+            // Verify navigation to Products page
+            Assert.assertTrue(
+                    productsPage.isProductsPageDisplayed(),
+                    "Did not navigate to Products page");
+
+            Reporter.log(
+                    "Back Home navigation successful", true);
+
+        } finally {
+            wb.close();
+            fis.close();
+        }
+    }
 }

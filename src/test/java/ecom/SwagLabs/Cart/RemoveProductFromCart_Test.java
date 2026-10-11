@@ -5,72 +5,83 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 import org.apache.poi.EncryptedDocumentException;
+import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
+
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.Test;
 
-<<<<<<< HEAD
-import objRepo.ProductPage;
-=======
-import ObjectRepo.ProductPage;
->>>>>>> 5b7f25652b05f2e95bee78314a22a550c47d4ddd
 import baseClass.BaseClass;
 import objRepo.LoginPage;
+import objRepo.ProductPage;
 import objRepo.CartPage;
 
 public class RemoveProductFromCart_Test extends BaseClass {
 
-	@Test(groups = { "Integration" })
-	public void removeProductFromCartTest() throws EncryptedDocumentException, IOException, InterruptedException {
+    @Test(groups = { "Integration" })
+    public void removeProductFromCartTest()
+            throws EncryptedDocumentException, IOException {
 
-		FileInputStream fis = new FileInputStream("./src/test/resources/TestData.xlsx");
-		Workbook wb = WorkbookFactory.create(fis);
+        FileInputStream fis =
+                new FileInputStream("./src/test/resources/TestData.xlsx");
 
-		try {
-			String un = wb.getSheet("LoginCredentials").getRow(1).getCell(0).toString().trim();
-			String pwd = wb.getSheet("LoginCredentials").getRow(1).getCell(1).toString().trim();
-			String productName = wb.getSheet("Sheet1").getRow(1).getCell(0).toString().trim();
+        Workbook wb = WorkbookFactory.create(fis);
 
-			// Login
-			LoginPage loginPage = new LoginPage(driver);
-			loginPage.login(un, pwd);
+        try {
+            DataFormatter formatter = new DataFormatter();
 
-			Thread.sleep(1000);
+            String un = formatter.formatCellValue(
+                    wb.getSheet("LoginCredentials")
+                      .getRow(1).getCell(0)).trim();
 
-			// Add product to cart
-			ProductPage productsPage = new ProductPage(driver);
+            String pwd = formatter.formatCellValue(
+                    wb.getSheet("LoginCredentials")
+                      .getRow(1).getCell(1)).trim();
 
-<<<<<<< HEAD
-			Assert.assertTrue(loginPage.isProductsPageDisplayed(), "Products page is not displayed");
-=======
-			Assert.assertTrue(productsPage.isProductsPageDisplayed(), "Products page is not displayed");
->>>>>>> 5b7f25652b05f2e95bee78314a22a550c47d4ddd
+            String productName = formatter.formatCellValue(
+                    wb.getSheet("Sheet1")
+                      .getRow(1).getCell(0)).trim();
 
-			Assert.assertFalse(productName.isEmpty(), "Product name is empty in Excel");
+            Assert.assertFalse(un.isEmpty(),
+                    "Username is empty in Excel");
 
-			productsPage.addProductToCart(productName);
+            Assert.assertFalse(pwd.isEmpty(),
+                    "Password is empty in Excel");
 
-			Thread.sleep(1000);
+            Assert.assertFalse(productName.isEmpty(),
+                    "Product name is empty in Excel");
 
-			// Open cart
-			driver.findElement(By.className("shopping_cart_link")).click();
+            // Login
+            LoginPage loginPage = new LoginPage(driver);
+            loginPage.login(un, pwd);
 
-			Thread.sleep(1000);
+            // Verify Products page
+            ProductPage productsPage = new ProductPage(driver);
 
-			// Remove product from cart
-			CartPage cartPage = new CartPage(driver);
-			cartPage.removeProductFromCart();
+            Assert.assertTrue(
+                    productsPage.isProductsPageDisplayed(),
+                    "Products page is not displayed");
 
-			Thread.sleep(1000);
+            // Add product to cart
+            productsPage.addProductToCart(productName);
 
-			Reporter.log("Product removed from cart successfully", true);
+            // Open cart
+            driver.findElement(
+                    By.className("shopping_cart_link")).click();
 
-		} finally {
-			wb.close();
-			fis.close();
-		}
-	}
+            // Remove product from cart
+            CartPage cartPage = new CartPage(driver);
+            cartPage.removeProductFromCart();
+
+            Reporter.log(
+                    "Product removed from cart successfully", true);
+
+        } finally {
+            wb.close();
+            fis.close();
+        }
+    }
 }

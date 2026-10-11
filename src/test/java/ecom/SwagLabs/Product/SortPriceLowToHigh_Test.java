@@ -8,67 +8,84 @@ import java.util.Collections;
 import java.util.List;
 
 import org.apache.poi.EncryptedDocumentException;
+import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
+
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.Test;
 
 import baseClass.BaseClass;
-<<<<<<< HEAD
 import objRepo.LoginPage;
 import objRepo.ProductPage;
-=======
-import ObjectRepo.LoginPage;
-import ObjectRepo.ProductPage;
->>>>>>> 5b7f25652b05f2e95bee78314a22a550c47d4ddd
 
 public class SortPriceLowToHigh_Test extends BaseClass {
 
-	@Test(groups = { "Integration" })
-	public void sortPriceLowToHighTest() throws EncryptedDocumentException, IOException, InterruptedException {
+    @Test(groups = { "Integration" })
+    public void sortPriceLowToHighTest()
+            throws EncryptedDocumentException, IOException {
 
-		FileInputStream fis = new FileInputStream("./src/test/resources/TestData.xlsx");
+        FileInputStream fis =
+                new FileInputStream("./src/test/resources/TestData.xlsx");
 
-		Workbook wb = WorkbookFactory.create(fis);
+        Workbook wb = WorkbookFactory.create(fis);
 
-		String un = wb.getSheet("LoginCredentials").getRow(1).getCell(0).toString().trim();
+        try {
+            DataFormatter formatter = new DataFormatter();
 
-		String pwd = wb.getSheet("LoginCredentials").getRow(1).getCell(1).toString().trim();
+            String un = formatter.formatCellValue(
+                    wb.getSheet("LoginCredentials")
+                      .getRow(1).getCell(0)).trim();
 
-		LoginPage loginPage = new LoginPage(driver);
-		loginPage.login(un, pwd);
+            String pwd = formatter.formatCellValue(
+                    wb.getSheet("LoginCredentials")
+                      .getRow(1).getCell(1)).trim();
 
-		Thread.sleep(1000);
+            // Login
+            LoginPage loginPage = new LoginPage(driver);
+            loginPage.login(un, pwd);
 
-<<<<<<< HEAD
-		Assert.assertTrue(loginPage.isProductsPageDisplayed(), "Login failed");
-=======
-		Assert.assertTrue(loginPage.isProductsDisplayed(), "Login failed");
->>>>>>> 5b7f25652b05f2e95bee78314a22a550c47d4ddd
+            // Verify Products page
+            ProductPage productsPage = new ProductPage(driver);
 
-		ProductPage productsPage = new ProductPage(driver);
+            Assert.assertTrue(
+                    productsPage.isProductsPageDisplayed(),
+                    "Products page is not displayed");
 
-		productsPage.selectPriceLowToHigh();
+            // Select Price: Low to High
+            productsPage.selectPriceLowToHigh();
 
-		Thread.sleep(1000);
+            // Get product prices
+            List<String> actualPrices = productsPage.getProductPrices();
 
-		List<String> actualPrices = productsPage.getProductPrices();
+            List<Double> actualValues = new ArrayList<>();
 
-		List<Double> actualValues = new ArrayList<>();
+            for (String price : actualPrices) {
+                actualValues.add(
+                        Double.parseDouble(
+                                price.replace("$", "").trim()));
+            }
 
-		for (String price : actualPrices) {
-			actualValues.add(Double.parseDouble(price.replace("$", "").trim()));
-		}
+            // Expected ascending order
+            List<Double> expectedValues =
+                    new ArrayList<>(actualValues);
 
-		List<Double> expectedValues = new ArrayList<>(actualValues);
-		Collections.sort(expectedValues);
+            Collections.sort(expectedValues);
 
-		Assert.assertEquals(actualValues, expectedValues, "Products are not sorted by price from low to high");
+            // Verify sorting
+            Assert.assertEquals(
+                    actualValues,
+                    expectedValues,
+                    "Products are not sorted by price from low to high");
 
-		Reporter.log("Products sorted by price: Low to High successfully", true);
+            Reporter.log(
+                    "Products sorted by price: Low to High successfully",
+                    true);
 
-		wb.close();
-		fis.close();
-	}
+        } finally {
+            wb.close();
+            fis.close();
+        }
+    }
 }

@@ -5,73 +5,86 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 import org.apache.poi.EncryptedDocumentException;
+import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
+
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.Test;
 
 import baseClass.BaseClass;
-<<<<<<< HEAD
 import objRepo.LoginPage;
 import objRepo.ProductPage;
 
-=======
-import ObjectRepo.LoginPage;
-import ObjectRepo.ProductPage;
->>>>>>> 5b7f25652b05f2e95bee78314a22a550c47d4ddd
-
 public class AddProductToCart_Test extends BaseClass {
 
-	@Test(groups = { "Integration" })
-	public void addProductToCartTest() throws EncryptedDocumentException, IOException, InterruptedException {
+    @Test(groups = { "Integration" })
+    public void addProductToCartTest()
+            throws EncryptedDocumentException, IOException {
 
-		FileInputStream fis = new FileInputStream("./src/test/resources/TestData.xlsx");
-		Workbook wb = WorkbookFactory.create(fis);
+        FileInputStream fis =
+                new FileInputStream("./src/test/resources/TestData.xlsx");
 
-		try {
-			String un = wb.getSheet("LoginCredentials").getRow(1).getCell(0).toString().trim();
+        Workbook wb = WorkbookFactory.create(fis);
 
-			String pwd = wb.getSheet("LoginCredentials").getRow(1).getCell(1).toString().trim();
+        try {
+            DataFormatter formatter = new DataFormatter();
 
-			String productName = wb.getSheet("Sheet1").getRow(1).getCell(0).toString().trim();
+            String un = formatter.formatCellValue(
+                    wb.getSheet("LoginCredentials")
+                      .getRow(1).getCell(0)).trim();
 
-			LoginPage loginPage = new LoginPage(driver);
-			loginPage.login(un, pwd);
+            String pwd = formatter.formatCellValue(
+                    wb.getSheet("LoginCredentials")
+                      .getRow(1).getCell(1)).trim();
 
-			Thread.sleep(1000);
+            String productName = formatter.formatCellValue(
+                    wb.getSheet("Sheet1")
+                      .getRow(1).getCell(0)).trim();
 
-<<<<<<< HEAD
-			Assert.assertTrue(loginPage.isProductsPageDisplayed(), "Login failed");
+            Assert.assertFalse(
+                    un.isEmpty(), "Username is empty in Excel");
 
-			ProductPage productsPage = new ProductPage(driver);
+            Assert.assertFalse(
+                    pwd.isEmpty(), "Password is empty in Excel");
 
-=======
-			Assert.assertTrue(loginPage.isProductsDisplayed(), "Login failed");
+            Assert.assertFalse(
+                    productName.isEmpty(),
+                    "Product name is empty in Excel");
 
-			ProductPage productsPage = new ProductPage(driver);
+            // Login
+            LoginPage loginPage = new LoginPage(driver);
+            loginPage.login(un, pwd);
 
-			Assert.assertTrue(productsPage.isProductsPageDisplayed(), "Products page is not displayed");
+            // Verify Products page
+            ProductPage productsPage = new ProductPage(driver);
 
->>>>>>> 5b7f25652b05f2e95bee78314a22a550c47d4ddd
-			Assert.assertFalse(productName.isEmpty(), "Product name is empty in Excel");
+            Assert.assertTrue(
+                    productsPage.isProductsPageDisplayed(),
+                    "Products page is not displayed");
 
-			productsPage.addProductToCart(productName);
+            // Add product to cart
+            productsPage.addProductToCart(productName);
 
-			Thread.sleep(1000);
+            // Verify product was added
+            Assert.assertEquals(
+                    productsPage.getProductButtonText(productName),
+                    "Remove",
+                    "Product was not added to cart");
 
-<<<<<<< HEAD
-=======
-			Assert.assertTrue(productsPage.isCartBadgeDisplayed(), "Cart badge is not displayed");
+            // Verify cart badge count
+            Assert.assertEquals(
+                    productsPage.getCartBadgeCount(),
+                    "1",
+                    "Cart should contain exactly one product");
 
-			Assert.assertEquals(productsPage.getCartCount(), "1", "Cart should contain exactly one product");
+            Reporter.log(
+                    "Product added to cart: " + productName, true);
 
->>>>>>> 5b7f25652b05f2e95bee78314a22a550c47d4ddd
-			Reporter.log("Product added to cart: " + productName, true);
-
-		} finally {
-			wb.close();
-			fis.close();
-		}
-	}
+        } finally {
+            wb.close();
+            fis.close();
+        }
+    }
 }

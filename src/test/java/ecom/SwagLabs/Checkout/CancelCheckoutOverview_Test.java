@@ -5,97 +5,105 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 import org.apache.poi.EncryptedDocumentException;
+import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
-import org.openqa.selenium.By;
+
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.Test;
 
-<<<<<<< HEAD
-import objRepo.ProductPage;
-=======
-import ObjectRepo.ProductPage;
->>>>>>> 5b7f25652b05f2e95bee78314a22a550c47d4ddd
 import baseClass.BaseClass;
 import objRepo.LoginPage;
+import objRepo.ProductPage;
 import objRepo.CheckoutPage;
 import objRepo.CartPage;
 import objRepo.CheckoutOverviewPage;
 
 public class CancelCheckoutOverview_Test extends BaseClass {
 
-	@Test(groups = { "Integration" })
-	public void cancelCheckoutOverviewTest() throws EncryptedDocumentException, IOException, InterruptedException {
+    @Test(groups = { "Integration" })
+    public void cancelCheckoutOverviewTest()
+            throws EncryptedDocumentException, IOException {
 
-		FileInputStream fis = new FileInputStream("./src/test/resources/TestData.xlsx");
-		Workbook wb = WorkbookFactory.create(fis);
+        FileInputStream fis =
+                new FileInputStream("./src/test/resources/TestData.xlsx");
 
-		try {
-			String un = wb.getSheet("LoginCredentials").getRow(1).getCell(0).toString().trim();
-			String pwd = wb.getSheet("LoginCredentials").getRow(1).getCell(1).toString().trim();
-			String productName = wb.getSheet("Sheet1").getRow(1).getCell(0).toString().trim();
+        Workbook wb = WorkbookFactory.create(fis);
 
-			String firstName = wb.getSheet("Sheet2").getRow(1).getCell(0).toString().trim();
-			String lastName = wb.getSheet("Sheet2").getRow(1).getCell(1).toString().trim();
-			String postalCode = wb.getSheet("Sheet2").getRow(1).getCell(2).toString().trim();
+        try {
+            DataFormatter formatter = new DataFormatter();
 
-			// Login
-			LoginPage loginPage = new LoginPage(driver);
-			loginPage.login(un, pwd);
+            String un = formatter.formatCellValue(
+                    wb.getSheet("LoginCredentials")
+                      .getRow(1).getCell(0)).trim();
 
-			Thread.sleep(1000);
+            String pwd = formatter.formatCellValue(
+                    wb.getSheet("LoginCredentials")
+                      .getRow(1).getCell(1)).trim();
 
-			// Add product to cart
-			ProductPage productsPage = new ProductPage(driver);
+            String productName = formatter.formatCellValue(
+                    wb.getSheet("Sheet1")
+                      .getRow(1).getCell(0)).trim();
 
-<<<<<<< HEAD
-			Assert.assertTrue(loginPage.isProductsPageDisplayed(), "Products page is not displayed");
-=======
-			Assert.assertTrue(productsPage.isProductsPageDisplayed(), "Products page is not displayed");
->>>>>>> 5b7f25652b05f2e95bee78314a22a550c47d4ddd
+            String firstName = formatter.formatCellValue(
+                    wb.getSheet("Sheet2")
+                      .getRow(1).getCell(0)).trim();
 
-			productsPage.addProductToCart(productName);
+            String lastName = formatter.formatCellValue(
+                    wb.getSheet("Sheet2")
+                      .getRow(1).getCell(1)).trim();
 
-			Thread.sleep(1000);
+            String postalCode = formatter.formatCellValue(
+                    wb.getSheet("Sheet2")
+                      .getRow(1).getCell(2)).trim();
 
-			// Open cart and checkout
-			CartPage hp = new CartPage(driver);
-			hp.getCart().click();
-			CheckoutPage checkoutPage = new CheckoutPage(driver);
-			checkoutPage.clickCheckoutButton();
-			Thread.sleep(1000);
+            // Login
+            LoginPage loginPage = new LoginPage(driver);
+            loginPage.login(un, pwd);
 
-			// Fill checkout details
-			checkoutPage.getFirstName().sendKeys(firstName);
-			checkoutPage.getLastName().sendKeys(lastName);
-			checkoutPage.getPostalCode().sendKeys(postalCode);
+            // Verify Products page
+            ProductPage productsPage = new ProductPage(driver);
 
-			// Click Continue
-			checkoutPage.getContinueButton().click();
+            Assert.assertTrue(
+                    productsPage.isProductsPageDisplayed(),
+                    "Products page is not displayed");
 
-			Thread.sleep(1000);
+            // Add product to cart
+            productsPage.addProductToCart(productName);
 
-			// Click Cancel on Checkout Overview
-			CheckoutOverviewPage overviewPage = new CheckoutOverviewPage(driver);
+            // Open cart and checkout
+            CartPage hp = new CartPage(driver);
+            hp.getCart().click();
 
-			overviewPage.getCancelButton().click();
+            CheckoutPage checkoutPage = new CheckoutPage(driver);
+            checkoutPage.clickCheckoutButton();
 
-			Thread.sleep(1000);
+            // Fill checkout details
+            checkoutPage.getFirstName().sendKeys(firstName);
+            checkoutPage.getLastName().sendKeys(lastName);
+            checkoutPage.getPostalCode().sendKeys(postalCode);
 
-			// Verify navigation to Products page
-<<<<<<< HEAD
-			Assert.assertTrue(loginPage.isProductsPageDisplayed(),
-=======
-			Assert.assertTrue(productsPage.isProductsPageDisplayed(),
->>>>>>> 5b7f25652b05f2e95bee78314a22a550c47d4ddd
-					"Did not navigate to Products page after cancellation");
+            // Click Continue
+            checkoutPage.getContinueButton().click();
 
-			Reporter.log("Checkout Overview cancelled successfully", true);
+            // Cancel on Checkout Overview
+            CheckoutOverviewPage overviewPage =
+                    new CheckoutOverviewPage(driver);
 
-		} finally {
-			wb.close();
-			fis.close();
-		}
-	}
+            overviewPage.getCancelButton().click();
+
+            // Verify navigation to Products page
+            Assert.assertTrue(
+                    productsPage.isProductsPageDisplayed(),
+                    "Did not navigate to Products page after cancellation");
+
+            Reporter.log(
+                    "Checkout Overview cancelled successfully", true);
+
+        } finally {
+            wb.close();
+            fis.close();
+        }
+    }
 }

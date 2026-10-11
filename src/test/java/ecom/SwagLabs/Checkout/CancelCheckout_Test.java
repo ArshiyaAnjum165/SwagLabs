@@ -5,75 +5,83 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 import org.apache.poi.EncryptedDocumentException;
+import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
+
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.Test;
 
-<<<<<<< HEAD
-import objRepo.ProductPage;
-=======
-import ObjectRepo.ProductPage;
->>>>>>> 5b7f25652b05f2e95bee78314a22a550c47d4ddd
 import baseClass.BaseClass;
 import objRepo.LoginPage;
+import objRepo.ProductPage;
 import objRepo.CartPage;
 import objRepo.CheckoutPage;
 
 public class CancelCheckout_Test extends BaseClass {
 
-	@Test(groups = { "Integration" })
-	public void cancelCheckoutTest() throws EncryptedDocumentException, IOException, InterruptedException {
+    @Test(groups = { "Integration" })
+    public void cancelCheckoutTest()
+            throws EncryptedDocumentException, IOException {
 
-		FileInputStream fis = new FileInputStream("./src/test/resources/TestData.xlsx");
-		Workbook wb = WorkbookFactory.create(fis);
+        FileInputStream fis =
+                new FileInputStream("./src/test/resources/TestData.xlsx");
 
-		try {
-			String un = wb.getSheet("LoginCredentials").getRow(1).getCell(0).toString().trim();
-			String pwd = wb.getSheet("LoginCredentials").getRow(1).getCell(1).toString().trim();
-			String productName = wb.getSheet("Sheet1").getRow(1).getCell(0).toString().trim();
+        Workbook wb = WorkbookFactory.create(fis);
 
-			// Login
-			LoginPage loginPage = new LoginPage(driver);
-			loginPage.login(un, pwd);
+        try {
+            DataFormatter formatter = new DataFormatter();
 
-			Thread.sleep(1000);
+            String un = formatter.formatCellValue(
+                    wb.getSheet("LoginCredentials")
+                      .getRow(1).getCell(0)).trim();
 
-			// Add product to cart
-			ProductPage productsPage = new ProductPage(driver);
-<<<<<<< HEAD
-			Assert.assertTrue(loginPage.isProductsPageDisplayed(), "Products page is not displayed");
-=======
-			Assert.assertTrue(productsPage.isProductsPageDisplayed(), "Products page is not displayed");
->>>>>>> 5b7f25652b05f2e95bee78314a22a550c47d4ddd
+            String pwd = formatter.formatCellValue(
+                    wb.getSheet("LoginCredentials")
+                      .getRow(1).getCell(1)).trim();
 
-			productsPage.addProductToCart(productName);
+            String productName = formatter.formatCellValue(
+                    wb.getSheet("Sheet1")
+                      .getRow(1).getCell(0)).trim();
 
-			Thread.sleep(1000);
+            // Login
+            LoginPage loginPage = new LoginPage(driver);
+            loginPage.login(un, pwd);
 
-			// Open cart and checkout
-			CartPage hp = new CartPage(driver);
-			hp.getCart().click();
-			CheckoutPage checkoutPage = new CheckoutPage(driver);
-			checkoutPage.clickCheckoutButton();
-			Thread.sleep(1000);
+            // Verify Products page
+            ProductPage productsPage = new ProductPage(driver);
 
-			// Cancel checkout
-			checkoutPage.getCancelButton().click();
+            Assert.assertTrue(
+                    productsPage.isProductsPageDisplayed(),
+                    "Products page is not displayed");
 
-			Thread.sleep(1000);
+            // Add product to cart
+            productsPage.addProductToCart(productName);
 
-			// Verify navigation back to cart
-			Assert.assertTrue(driver.findElement(By.id("cart_contents_container")).isDisplayed(),
-					"Did not navigate back to cart");
+            // Open cart and checkout
+            CartPage hp = new CartPage(driver);
+            hp.getCart().click();
 
-			Reporter.log("Checkout cancelled successfully", true);
+            CheckoutPage checkoutPage = new CheckoutPage(driver);
+            checkoutPage.clickCheckoutButton();
 
-		} finally {
-			wb.close();
-			fis.close();
-		}
-	}
+            // Cancel checkout
+            checkoutPage.getCancelButton().click();
+
+            // Verify navigation back to cart
+            Assert.assertTrue(
+                    driver.findElement(
+                            By.id("cart_contents_container")).isDisplayed(),
+                    "Did not navigate back to cart");
+
+            Reporter.log(
+                    "Checkout cancelled successfully", true);
+
+        } finally {
+            wb.close();
+            fis.close();
+        }
+    }
 }

@@ -8,65 +8,77 @@ import java.util.Collections;
 import java.util.List;
 
 import org.apache.poi.EncryptedDocumentException;
+import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
+
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.Test;
 
 import baseClass.BaseClass;
-<<<<<<< HEAD
 import objRepo.LoginPage;
 import objRepo.ProductPage;
-=======
-import ObjectRepo.LoginPage;
-import ObjectRepo.ProductPage;
->>>>>>> 5b7f25652b05f2e95bee78314a22a550c47d4ddd
 
 public class SortProductsAToZ_Test extends BaseClass {
 
-	@Test(groups = { "Integration" })
-	public void sortProductsAToZTest() throws EncryptedDocumentException, IOException, InterruptedException {
+    @Test(groups = { "Integration" })
+    public void sortProductsAToZTest()
+            throws EncryptedDocumentException, IOException {
 
-		FileInputStream fis = new FileInputStream("./src/test/resources/TestData.xlsx");
+        FileInputStream fis =
+                new FileInputStream("./src/test/resources/TestData.xlsx");
 
-		Workbook wb = WorkbookFactory.create(fis);
+        Workbook wb = WorkbookFactory.create(fis);
 
-		String un = wb.getSheet("LoginCredentials").getRow(1).getCell(0).toString().trim();
+        try {
+            DataFormatter formatter = new DataFormatter();
 
-		String pwd = wb.getSheet("LoginCredentials").getRow(1).getCell(1).toString().trim();
+            String un = formatter.formatCellValue(
+                    wb.getSheet("LoginCredentials")
+                      .getRow(1).getCell(0)).trim();
 
-		LoginPage loginPage = new LoginPage(driver);
-		loginPage.login(un, pwd);
+            String pwd = formatter.formatCellValue(
+                    wb.getSheet("LoginCredentials")
+                      .getRow(1).getCell(1)).trim();
 
-		Thread.sleep(1000);
+            // Login
+            LoginPage loginPage = new LoginPage(driver);
+            loginPage.login(un, pwd);
 
-<<<<<<< HEAD
-		Assert.assertTrue(loginPage.isProductsPageDisplayed(), "Login failed");
+            // Verify Products page
+            ProductPage productsPage = new ProductPage(driver);
 
-		ProductPage productsPage = new ProductPage(driver);
+            Assert.assertTrue(
+                    productsPage.isProductsPageDisplayed(),
+                    "Products page is not displayed");
 
-		productsPage.selectProductsAToZ();
-=======
-		Assert.assertTrue(loginPage.isProductsDisplayed(), "Login failed");
+            // Sort products A to Z
+            productsPage.selectProductsAToZ();
 
-		ProductPage productsPage = new ProductPage(driver);
+            // Get actual product names
+            List<String> actualNames = productsPage.getProductNames();
 
-		productsPage.selectNameAToZ();
->>>>>>> 5b7f25652b05f2e95bee78314a22a550c47d4ddd
+            // Prepare expected alphabetical order
+            List<String> expectedNames =
+                    new ArrayList<>(actualNames);
 
-		Thread.sleep(1000);
+            Collections.sort(
+                    expectedNames,
+                    String.CASE_INSENSITIVE_ORDER);
 
-		List<String> actualNames = productsPage.getProductNames();
+            // Verify sorting
+            Assert.assertEquals(
+                    actualNames,
+                    expectedNames,
+                    "Products are not sorted from A to Z");
 
-		List<String> expectedNames = new ArrayList<>(actualNames);
-		Collections.sort(expectedNames, String.CASE_INSENSITIVE_ORDER);
+            Reporter.log(
+                    "Products sorted from A to Z successfully", true);
 
-		Assert.assertEquals(actualNames, expectedNames, "Products are not sorted from A to Z");
-
-		Reporter.log("Products sorted from A to Z successfully", true);
-
-		wb.close();
-		fis.close();
-	}
+        } finally {
+            wb.close();
+            fis.close();
+        }
+    }
 }

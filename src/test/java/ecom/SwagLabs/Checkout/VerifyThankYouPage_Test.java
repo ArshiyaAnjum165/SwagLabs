@@ -5,89 +5,108 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 import org.apache.poi.EncryptedDocumentException;
+import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
+
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.Test;
 
-<<<<<<< HEAD
-import objRepo.ProductPage;
-=======
-import ObjectRepo.ProductPage;
->>>>>>> 5b7f25652b05f2e95bee78314a22a550c47d4ddd
 import baseClass.BaseClass;
 import objRepo.LoginPage;
+import objRepo.ProductPage;
 import objRepo.CheckoutPage;
 import objRepo.CartPage;
 import objRepo.CheckoutOverviewPage;
 
 public class VerifyThankYouPage_Test extends BaseClass {
 
-	@Test(groups = { "Integration", "System" })
-	public void verifyThankYouPageTest() throws EncryptedDocumentException, IOException, InterruptedException {
+    @Test(groups = { "Integration", "System" })
+    public void verifyThankYouPageTest()
+            throws EncryptedDocumentException, IOException {
 
-		FileInputStream fis = new FileInputStream("./src/test/resources/TestData.xlsx");
-		Workbook wb = WorkbookFactory.create(fis);
+        FileInputStream fis =
+                new FileInputStream("./src/test/resources/TestData.xlsx");
 
-		try {
-			String un = wb.getSheet("LoginCredentials").getRow(1).getCell(0).toString().trim();
-			String pwd = wb.getSheet("LoginCredentials").getRow(1).getCell(1).toString().trim();
-			String productName = wb.getSheet("Sheet1").getRow(1).getCell(0).toString().trim();
+        Workbook wb = WorkbookFactory.create(fis);
 
-			String firstName = wb.getSheet("Sheet2").getRow(1).getCell(0).toString().trim();
-			String lastName = wb.getSheet("Sheet2").getRow(1).getCell(1).toString().trim();
-			String postalCode = wb.getSheet("Sheet2").getRow(1).getCell(2).toString().trim();
+        try {
+            DataFormatter formatter = new DataFormatter();
 
-			// Login
-			LoginPage loginPage = new LoginPage(driver);
-			loginPage.login(un, pwd);
+            String un = formatter.formatCellValue(
+                    wb.getSheet("LoginCredentials")
+                      .getRow(1).getCell(0)).trim();
 
-			Thread.sleep(1000);
+            String pwd = formatter.formatCellValue(
+                    wb.getSheet("LoginCredentials")
+                      .getRow(1).getCell(1)).trim();
 
-			// Add product to cart
-			ProductPage productsPage = new ProductPage(driver);
-<<<<<<< HEAD
-			Assert.assertTrue(loginPage.isProductsPageDisplayed(), "Products page is not displayed");
-=======
-			Assert.assertTrue(productsPage.isProductsPageDisplayed(), "Products page is not displayed");
->>>>>>> 5b7f25652b05f2e95bee78314a22a550c47d4ddd
+            String productName = formatter.formatCellValue(
+                    wb.getSheet("Sheet1")
+                      .getRow(1).getCell(0)).trim();
 
-			productsPage.addProductToCart(productName);
+            String firstName = formatter.formatCellValue(
+                    wb.getSheet("Sheet2")
+                      .getRow(1).getCell(0)).trim();
 
-			Thread.sleep(1000);
-			// Open cart and checkout
-			CartPage hp = new CartPage(driver);
-			hp.getCart().click();
-			CheckoutPage checkoutPage = new CheckoutPage(driver);
-			checkoutPage.clickCheckoutButton();
-			Thread.sleep(1000);
+            String lastName = formatter.formatCellValue(
+                    wb.getSheet("Sheet2")
+                      .getRow(1).getCell(1)).trim();
 
-			// Fill checkout details
-			checkoutPage.getFirstName().sendKeys(firstName);
-			checkoutPage.getLastName().sendKeys(lastName);
-			checkoutPage.getPostalCode().sendKeys(postalCode);
+            String postalCode = formatter.formatCellValue(
+                    wb.getSheet("Sheet2")
+                      .getRow(1).getCell(2)).trim();
 
-			// Continue to overview
-			checkoutPage.getContinueButton().click();
-			Thread.sleep(1000);
+            // Login
+            LoginPage loginPage = new LoginPage(driver);
+            loginPage.login(un, pwd);
 
-			// Click Finish
-			CheckoutOverviewPage overviewPage = new CheckoutOverviewPage(driver);
-			overviewPage.getFinishButton().click();
+            // Verify Products page
+            ProductPage productsPage = new ProductPage(driver);
 
-			Thread.sleep(1000);
+            Assert.assertTrue(
+                    productsPage.isProductsPageDisplayed(),
+                    "Products page is not displayed");
 
-			// Verify Thank You page
-			Assert.assertEquals(driver.findElement(By.className("complete-header")).getText(),
-					"Thank you for your order!", "Thank You page is not displayed");
+            // Add product to cart
+            productsPage.addProductToCart(productName);
 
-			Reporter.log("Thank You page displayed successfully", true);
+            // Open cart and checkout
+            CartPage hp = new CartPage(driver);
+            hp.getCart().click();
 
-		} finally {
-			wb.close();
-			fis.close();
-		}
-	}
+            CheckoutPage checkoutPage = new CheckoutPage(driver);
+            checkoutPage.clickCheckoutButton();
+
+            // Fill checkout details
+            checkoutPage.getFirstName().sendKeys(firstName);
+            checkoutPage.getLastName().sendKeys(lastName);
+            checkoutPage.getPostalCode().sendKeys(postalCode);
+
+            // Continue to overview
+            checkoutPage.getContinueButton().click();
+
+            // Click Finish
+            CheckoutOverviewPage overviewPage =
+                    new CheckoutOverviewPage(driver);
+
+            overviewPage.getFinishButton().click();
+
+            // Verify Thank You page
+            Assert.assertEquals(
+                    driver.findElement(
+                            By.className("complete-header")).getText(),
+                    "Thank you for your order!",
+                    "Thank You page is not displayed");
+
+            Reporter.log(
+                    "Thank You page displayed successfully", true);
+
+        } finally {
+            wb.close();
+            fis.close();
+        }
+    }
 }

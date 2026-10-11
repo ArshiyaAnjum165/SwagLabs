@@ -5,8 +5,10 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 import org.apache.poi.EncryptedDocumentException;
+import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
+
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.Reporter;
@@ -14,105 +16,114 @@ import org.testng.annotations.Test;
 
 import baseClass.BaseClass;
 import objRepo.LoginPage;
-<<<<<<< HEAD
 import objRepo.ProductPage;
-=======
-import ObjectRepo.ProductPage;
->>>>>>> 5b7f25652b05f2e95bee78314a22a550c47d4ddd
 import Utility.TakeScreenshot;
 import objRepo.CartPage;
 import objRepo.CheckoutPage;
 
 public class FillCheckoutDetails_Negative_Test extends BaseClass {
 
-	@Test(groups = { "Integration", "Nev" })
-	public void fillCheckoutDetailsNegativeTest() throws EncryptedDocumentException, IOException, InterruptedException {
+    @Test(groups = { "Integration", "Nev" })
+    public void fillCheckoutDetailsNegativeTest()
+            throws EncryptedDocumentException, IOException {
 
-		FileInputStream fis = new FileInputStream("./src/test/resources/TestData.xlsx");
-		Workbook wb = WorkbookFactory.create(fis);
+        FileInputStream fis =
+                new FileInputStream("./src/test/resources/TestData.xlsx");
 
-		try {
-			String un = wb.getSheet("LoginCredentials").getRow(1).getCell(0).toString().trim();
+        Workbook wb = WorkbookFactory.create(fis);
 
-			String pwd = wb.getSheet("LoginCredentials").getRow(1).getCell(1).toString().trim();
+        try {
+            DataFormatter formatter = new DataFormatter();
 
-			String productName = wb.getSheet("Sheet1").getRow(1).getCell(0).toString().trim();
+            String un = formatter.formatCellValue(
+                    wb.getSheet("LoginCredentials")
+                      .getRow(1).getCell(0)).trim();
 
-			// Read negative checkout data from Sheet3
-			String firstName = wb.getSheet("Sheet3").getRow(1).getCell(0) == null ? ""
-					: wb.getSheet("Sheet3").getRow(1).getCell(0).toString().trim();
+            String pwd = formatter.formatCellValue(
+                    wb.getSheet("LoginCredentials")
+                      .getRow(1).getCell(1)).trim();
 
-			String lastName = wb.getSheet("Sheet3").getRow(1).getCell(1) == null ? ""
-					: wb.getSheet("Sheet3").getRow(1).getCell(1).toString().trim();
+            String productName = formatter.formatCellValue(
+                    wb.getSheet("Sheet1")
+                      .getRow(1).getCell(0)).trim();
 
-			String postalCode = wb.getSheet("Sheet3").getRow(1).getCell(2) == null ? ""
-					: wb.getSheet("Sheet3").getRow(1).getCell(2).toString().trim();
+            // Read negative checkout data from Sheet3
+            String firstName = formatter.formatCellValue(
+                    wb.getSheet("Sheet3").getRow(1).getCell(0)).trim();
 
-			// Login
-			LoginPage loginPage = new LoginPage(driver);
-			loginPage.login(un, pwd);
+            String lastName = formatter.formatCellValue(
+                    wb.getSheet("Sheet3").getRow(1).getCell(1)).trim();
 
-			Thread.sleep(1000);
+            String postalCode = formatter.formatCellValue(
+                    wb.getSheet("Sheet3").getRow(1).getCell(2)).trim();
 
-			// Add product to cart
-			ProductPage productsPage = new ProductPage(driver);
+            // Login
+            LoginPage loginPage = new LoginPage(driver);
+            loginPage.login(un, pwd);
 
-<<<<<<< HEAD
-			Assert.assertTrue(loginPage.isProductsPageDisplayed(), "Products page is not displayed");
-=======
-			Assert.assertTrue(productsPage.isProductsPageDisplayed(), "Products page is not displayed");
->>>>>>> 5b7f25652b05f2e95bee78314a22a550c47d4ddd
+            // Verify Products page
+            ProductPage productsPage = new ProductPage(driver);
 
-			productsPage.addProductToCart(productName);
+            Assert.assertTrue(
+                    productsPage.isProductsPageDisplayed(),
+                    "Products page is not displayed");
 
-			Thread.sleep(1000);
+            // Add product to cart
+            productsPage.addProductToCart(productName);
 
-			// Open cart
-			CartPage hp = new CartPage(driver);
-			hp.getCart().click();
+            // Open cart
+            CartPage hp = new CartPage(driver);
+            hp.getCart().click();
 
-			// Click Checkout
-			hp.getCheckout().click();
+            // Click Checkout
+            hp.getCheckout().click();
 
-			Thread.sleep(1000);
+            // Initialize CheckoutPage object
+            CheckoutPage checkoutPage = new CheckoutPage(driver);
 
-			// Initialize CheckoutPage object
-			CheckoutPage checkoutPage = new CheckoutPage(driver);
+            // Fill negative checkout data
+            checkoutPage.getFirstName().sendKeys(firstName);
+            checkoutPage.getLastName().sendKeys(lastName);
+            checkoutPage.getPostalCode().sendKeys(postalCode);
 
-			// Fill negative checkout data
-			checkoutPage.getFirstName().sendKeys(firstName);
-			checkoutPage.getLastName().sendKeys(lastName);
-			checkoutPage.getPostalCode().sendKeys(postalCode);
+            // Verify entered data
+            Assert.assertEquals(
+                    checkoutPage.getFirstName().getAttribute("value"),
+                    firstName,
+                    "First name does not match Excel data");
 
-			// Verify entered data
-			Assert.assertEquals(checkoutPage.getFirstName().getAttribute("value"), firstName,
-					"First name does not match Excel data");
+            Assert.assertEquals(
+                    checkoutPage.getLastName().getAttribute("value"),
+                    lastName,
+                    "Last name does not match Excel data");
 
-			Assert.assertEquals(checkoutPage.getLastName().getAttribute("value"), lastName,
-					"Last name does not match Excel data");
+            Assert.assertEquals(
+                    checkoutPage.getPostalCode().getAttribute("value"),
+                    postalCode,
+                    "Postal code does not match Excel data");
 
-			Assert.assertEquals(checkoutPage.getPostalCode().getAttribute("value"), postalCode,
-					"Postal code does not match Excel data");
+            // Click Continue
+            checkoutPage.getContinueButton().click();
 
-			// Click Continue
-			checkoutPage.getContinueButton().click();
+            // Verify error message
+            boolean errorDisplayed = driver.findElement(
+                    By.xpath("//h3[@data-test='error']")).isDisplayed();
 
-			Thread.sleep(1000);
+            Assert.assertTrue(
+                    errorDisplayed,
+                    "Error message is not displayed");
 
-			// Verify error message
-			boolean errorDisplayed = driver.findElement(By.xpath("//h3[@data-test='error']")).isDisplayed();
+            // Take screenshot after error message appears
+            TakeScreenshot ts = new TakeScreenshot();
+            ts.takeScreenshot(driver, "InvalidChechoutData");
 
-			Assert.assertTrue(errorDisplayed, "Error message is not displayed");
+            Reporter.log(
+                    "Error message displayed for invalid checkout data",
+                    true);
 
-			// Take screenshot after error message appears
-			TakeScreenshot ts = new TakeScreenshot();
-			ts.takeScreenshot(driver, "InvalidChechoutData");
-
-			Reporter.log("Error message displayed for invalid checkout data", true);
-
-		} finally {
-			wb.close();
-			fis.close();
-		}
-	}
+        } finally {
+            wb.close();
+            fis.close();
+        }
+    }
 }

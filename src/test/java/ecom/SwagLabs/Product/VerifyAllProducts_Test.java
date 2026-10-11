@@ -8,6 +8,7 @@ import java.util.Collections;
 import java.util.List;
 
 import org.apache.poi.EncryptedDocumentException;
+import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.testng.Assert;
@@ -15,129 +16,140 @@ import org.testng.Reporter;
 import org.testng.annotations.Test;
 
 import baseClass.BaseClass;
-<<<<<<< HEAD
 import objRepo.LoginPage;
 import objRepo.ProductPage;
-=======
-import ObjectRepo.LoginPage;
-import ObjectRepo.ProductPage;
->>>>>>> 5b7f25652b05f2e95bee78314a22a550c47d4ddd
 
 public class VerifyAllProducts_Test extends BaseClass {
 
-	@Test(groups = { "Integration" })
-	public void verifyAllProductsTest() throws EncryptedDocumentException, IOException, InterruptedException {
+    @Test(groups = { "Integration" })
+    public void verifyAllProductsTest()
+            throws EncryptedDocumentException, IOException {
 
-		FileInputStream fis = new FileInputStream("./src/test/resources/TestData.xlsx");
+        FileInputStream fis =
+                new FileInputStream("./src/test/resources/TestData.xlsx");
 
-		Workbook wb = WorkbookFactory.create(fis);
+        Workbook wb = WorkbookFactory.create(fis);
 
-		String un = wb.getSheet("LoginCredentials").getRow(1).getCell(0).toString().trim();
+        try {
+            DataFormatter formatter = new DataFormatter();
 
-		String pwd = wb.getSheet("LoginCredentials").getRow(1).getCell(1).toString().trim();
+            String un = formatter.formatCellValue(
+                    wb.getSheet("LoginCredentials")
+                      .getRow(1).getCell(0)).trim();
 
-		LoginPage loginPage = new LoginPage(driver);
-		loginPage.login(un, pwd);
+            String pwd = formatter.formatCellValue(
+                    wb.getSheet("LoginCredentials")
+                      .getRow(1).getCell(1)).trim();
 
-		Thread.sleep(1000);
+            // Login
+            LoginPage loginPage = new LoginPage(driver);
+            loginPage.login(un, pwd);
 
-<<<<<<< HEAD
-		Assert.assertTrue(loginPage.isProductsPageDisplayed(), "Login failed");
+            // Verify Products page
+            ProductPage productsPage = new ProductPage(driver);
 
-		ProductPage productsPage = new ProductPage(driver);
-		
-=======
-		Assert.assertTrue(loginPage.isProductsDisplayed(), "Login failed");
+            Assert.assertTrue(
+                    productsPage.isProductsPageDisplayed(),
+                    "Products page is not displayed");
 
-		ProductPage productsPage = new ProductPage(driver);
+            // Verify product count
+            List<String> productNames = productsPage.getProductNames();
 
-		Assert.assertTrue(productsPage.isProductsPageDisplayed(), "Products page is not displayed");
+            Assert.assertEquals(
+                    productNames.size(), 6,
+                    "Expected 6 products");
 
->>>>>>> 5b7f25652b05f2e95bee78314a22a550c47d4ddd
-		// Verify product count
-		List<String> productNames = productsPage.getProductNames();
+            // Verify product names are not empty
+            for (String name : productNames) {
+                Assert.assertFalse(
+                        name.trim().isEmpty(),
+                        "Product name is empty");
+            }
 
-		Assert.assertEquals(productNames.size(), 6, "Expected 6 products");
+            // Verify product prices
+            List<String> productPrices = productsPage.getProductPrices();
 
-		// Verify product names are not empty
-		for (String name : productNames) {
-			Assert.assertFalse(name.trim().isEmpty(), "Product name is empty");
-		}
+            Assert.assertEquals(
+                    productPrices.size(), 6,
+                    "Expected 6 product prices");
 
-		// Verify product prices
-		List<String> productPrices = productsPage.getProductPrices();
+            for (String price : productPrices) {
+                Assert.assertTrue(
+                        price.matches("\\$\\d+\\.\\d{2}"),
+                        "Invalid product price: " + price);
+            }
 
-		Assert.assertEquals(productPrices.size(), 6, "Expected 6 product prices");
+            // Verify Name A to Z sorting
+            productsPage.selectProductsAToZ();
 
-		for (String price : productPrices) {
-			Assert.assertTrue(price.matches("\\$\\d+\\.\\d{2}"), "Invalid product price: " + price);
-		}
+            List<String> actualNames = productsPage.getProductNames();
+            List<String> expectedNames = new ArrayList<>(actualNames);
 
-		// Verify Name A to Z sorting
-<<<<<<< HEAD
-		productsPage.selectProductsAToZ();
-=======
-		productsPage.selectNameAToZ();
->>>>>>> 5b7f25652b05f2e95bee78314a22a550c47d4ddd
-		Thread.sleep(1000);
+            expectedNames.sort(String.CASE_INSENSITIVE_ORDER);
 
-		List<String> actualNames = productsPage.getProductNames();
-		List<String> expectedNames = new ArrayList<>(actualNames);
+            Assert.assertEquals(
+                    actualNames, expectedNames,
+                    "Name A to Z sorting failed");
 
-		expectedNames.sort(String.CASE_INSENSITIVE_ORDER);
+            // Verify Name Z to A sorting
+            productsPage.selectProductsZToA();
 
-		Assert.assertEquals(actualNames, expectedNames, "Name A to Z sorting failed");
+            actualNames = productsPage.getProductNames();
+            expectedNames = new ArrayList<>(actualNames);
 
-		// Verify Name Z to A sorting
-<<<<<<< HEAD
-		productsPage.selectProductsZToA();
-=======
-		productsPage.selectNameZToA();
->>>>>>> 5b7f25652b05f2e95bee78314a22a550c47d4ddd
-		Thread.sleep(1000);
+            expectedNames.sort(
+                    Collections.reverseOrder(
+                            String.CASE_INSENSITIVE_ORDER));
 
-		actualNames = productsPage.getProductNames();
-		expectedNames = new ArrayList<>(actualNames);
+            Assert.assertEquals(
+                    actualNames, expectedNames,
+                    "Name Z to A sorting failed");
 
-		expectedNames.sort(Collections.reverseOrder(String.CASE_INSENSITIVE_ORDER));
+            // Verify Price Low to High sorting
+            productsPage.selectPriceLowToHigh();
 
-		Assert.assertEquals(actualNames, expectedNames, "Name Z to A sorting failed");
+            List<String> actualPrices = productsPage.getProductPrices();
+            List<Double> expectedPrices = new ArrayList<>();
 
-		// Verify Price Low to High sorting
-		productsPage.selectPriceLowToHigh();
-		Thread.sleep(1000);
+            for (String price : actualPrices) {
+                expectedPrices.add(
+                        Double.parseDouble(
+                                price.replace("$", "").trim()));
+            }
 
-		List<String> actualPrices = productsPage.getProductPrices();
-		List<Double> expectedPrices = new ArrayList<>();
+            List<Double> sortedPrices = new ArrayList<>(expectedPrices);
+            Collections.sort(sortedPrices);
 
-		for (String price : actualPrices) {
-			expectedPrices.add(Double.parseDouble(price.replace("$", "").trim()));
-		}
+            Assert.assertEquals(
+                    expectedPrices, sortedPrices,
+                    "Price Low to High sorting failed");
 
-		List<Double> sortedPrices = new ArrayList<>(expectedPrices);
-		Collections.sort(sortedPrices);
+            // Verify Price High to Low sorting
+            productsPage.selectPriceHighToLow();
 
-		Assert.assertEquals(expectedPrices, sortedPrices, "Price Low to High sorting failed");
+            actualPrices = productsPage.getProductPrices();
+            expectedPrices = new ArrayList<>();
 
-		// Verify Price High to Low sorting
-		productsPage.selectPriceHighToLow();
-		Thread.sleep(1000);
+            for (String price : actualPrices) {
+                expectedPrices.add(
+                        Double.parseDouble(
+                                price.replace("$", "").trim()));
+            }
 
-		actualPrices = productsPage.getProductPrices();
-		expectedPrices = new ArrayList<>();
+            sortedPrices = new ArrayList<>(expectedPrices);
+            sortedPrices.sort(Collections.reverseOrder());
 
-		for (String price : actualPrices) {
-			expectedPrices.add(Double.parseDouble(price.replace("$", "").trim()));
-		}
+            Assert.assertEquals(
+                    expectedPrices, sortedPrices,
+                    "Price High to Low sorting failed");
 
-		sortedPrices = new ArrayList<>(expectedPrices);
-		sortedPrices.sort(Collections.reverseOrder());
+            Reporter.log(
+                    "Product count, names, prices and all sorting options verified successfully",
+                    true);
 
-		Assert.assertEquals(expectedPrices, sortedPrices, "Price High to Low sorting failed");
-
-		Reporter.log("Product count, names, prices and all sorting options verified successfully", true);
-
-		wb.close();
-		fis.close();
-	}
+        } finally {
+            wb.close();
+            fis.close();
+        }
+    }
 }
