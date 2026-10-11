@@ -15,8 +15,13 @@ import org.testng.Reporter;
 import org.testng.annotations.Test;
 
 import baseClass.BaseClass;
+<<<<<<< HEAD
 import objRepo.LoginPage;
 import objRepo.ProductPage;
+=======
+import ObjectRepo.LoginPage;
+import ObjectRepo.ProductPage;
+>>>>>>> 5b7f25652b05f2e95bee78314a22a550c47d4ddd
 
 public class VerifyAllProducts_Test extends BaseClass {
 
@@ -36,10 +41,19 @@ public class VerifyAllProducts_Test extends BaseClass {
 
 		Thread.sleep(1000);
 
+<<<<<<< HEAD
 		Assert.assertTrue(loginPage.isProductsPageDisplayed(), "Login failed");
 
 		ProductPage productsPage = new ProductPage(driver);
 		
+=======
+		Assert.assertTrue(loginPage.isProductsDisplayed(), "Login failed");
+
+		ProductPage productsPage = new ProductPage(driver);
+
+		Assert.assertTrue(productsPage.isProductsPageDisplayed(), "Products page is not displayed");
+
+>>>>>>> 5b7f25652b05f2e95bee78314a22a550c47d4ddd
 		// Verify product count
 		List<String> productNames = productsPage.getProductNames();
 
@@ -60,7 +74,11 @@ public class VerifyAllProducts_Test extends BaseClass {
 		}
 
 		// Verify Name A to Z sorting
+<<<<<<< HEAD
 		productsPage.selectProductsAToZ();
+=======
+		productsPage.selectNameAToZ();
+>>>>>>> 5b7f25652b05f2e95bee78314a22a550c47d4ddd
 		Thread.sleep(1000);
 
 		List<String> actualNames = productsPage.getProductNames();
@@ -71,7 +89,11 @@ public class VerifyAllProducts_Test extends BaseClass {
 		Assert.assertEquals(actualNames, expectedNames, "Name A to Z sorting failed");
 
 		// Verify Name Z to A sorting
+<<<<<<< HEAD
 		productsPage.selectProductsZToA();
+=======
+		productsPage.selectNameZToA();
+>>>>>>> 5b7f25652b05f2e95bee78314a22a550c47d4ddd
 		Thread.sleep(1000);
 
 		actualNames = productsPage.getProductNames();

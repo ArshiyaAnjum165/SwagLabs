@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
     <line>
@@ -14,6 +15,33 @@
     <test started-at="2026-10-11T10:50:17 IST" name="Default test" finished-at="2026-10-11T10:50:25 IST" duration-ms="8654">
       <class name="ecom.SwagLabs.Product.AddProductToCart_Test">
         <test-method is-config="true" signature="launchBrowser(java.lang.String)[pri:0, instance:ecom.SwagLabs.Product.AddProductToCart_Test@7722c3c3]" started-at="2026-10-11T10:50:17 IST" name="launchBrowser" finished-at="2026-10-11T10:50:19 IST" duration-ms="2610" status="PASS">
+=======
+<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
+  <reporter-output>
+    <line>
+      <![CDATA[Error message displayed for invalid checkout data]]>
+    </line>
+    <line>
+      <![CDATA[User didn't logged in with invalid credentials]]>
+    </line>
+  </reporter-output>
+  <suite started-at="2026-10-09T19:03:07 IST" name="Suite" finished-at="2026-10-09T19:03:17 IST" duration-ms="10251">
+    <groups>
+      <group name="Functional">
+        <method signature="UserLoginWithInvalidUsername_Test.userLoginWithInvalidUsername_Test()[pri:0, instance:Login.UserLoginWithInvalidUsername_Test@3a93b025]" name="userLoginWithInvalidUsername_Test" class="Login.UserLoginWithInvalidUsername_Test"/>
+      </group> <!-- Functional -->
+      <group name="Integration">
+        <method signature="FillCheckoutDetails_Negative_Test.fillCheckoutDetailsNegativeTest()[pri:0, instance:Checkout.FillCheckoutDetails_Negative_Test@5876a9af]" name="fillCheckoutDetailsNegativeTest" class="Checkout.FillCheckoutDetails_Negative_Test"/>
+      </group> <!-- Integration -->
+      <group name="Nev">
+        <method signature="FillCheckoutDetails_Negative_Test.fillCheckoutDetailsNegativeTest()[pri:0, instance:Checkout.FillCheckoutDetails_Negative_Test@5876a9af]" name="fillCheckoutDetailsNegativeTest" class="Checkout.FillCheckoutDetails_Negative_Test"/>
+        <method signature="UserLoginWithInvalidUsername_Test.userLoginWithInvalidUsername_Test()[pri:0, instance:Login.UserLoginWithInvalidUsername_Test@3a93b025]" name="userLoginWithInvalidUsername_Test" class="Login.UserLoginWithInvalidUsername_Test"/>
+      </group> <!-- Nev -->
+    </groups>
+    <test started-at="2026-10-09T19:03:07 IST" name="Test" finished-at="2026-10-09T19:03:17 IST" duration-ms="10251">
+      <class name="Login.UserLoginWithInvalidUsername_Test">
+        <test-method is-config="true" signature="launchBrowser(java.lang.String)[pri:0, instance:Login.UserLoginWithInvalidUsername_Test@3a93b025]" started-at="2026-10-09T19:03:15 IST" name="launchBrowser" finished-at="2026-10-09T19:03:16 IST" duration-ms="1426" status="PASS">
+>>>>>>> 5b7f25652b05f2e95bee78314a22a550c47d4ddd
           <params>
             <param index="0">
               <value>
@@ -24,6 +52,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launchBrowser -->
+<<<<<<< HEAD
         <test-method signature="addProductToCartTest()[pri:0, instance:ecom.SwagLabs.Product.AddProductToCart_Test@7722c3c3]" started-at="2026-10-11T10:50:19 IST" name="addProductToCartTest" finished-at="2026-10-11T10:50:25 IST" duration-ms="5692" status="PASS">
           <reporter-output>
             <line>
@@ -38,4 +67,44 @@
       </class> <!-- ecom.SwagLabs.Product.AddProductToCart_Test -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
+=======
+        <test-method signature="userLoginWithInvalidUsername_Test()[pri:0, instance:Login.UserLoginWithInvalidUsername_Test@3a93b025]" started-at="2026-10-09T19:03:16 IST" name="userLoginWithInvalidUsername_Test" finished-at="2026-10-09T19:03:17 IST" duration-ms="451" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[User didn't logged in with invalid credentials]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- userLoginWithInvalidUsername_Test -->
+        <test-method is-config="true" signature="closeBrowser()[pri:0, instance:Login.UserLoginWithInvalidUsername_Test@3a93b025]" started-at="2026-10-09T19:03:17 IST" name="closeBrowser" finished-at="2026-10-09T19:03:17 IST" duration-ms="125" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closeBrowser -->
+      </class> <!-- Login.UserLoginWithInvalidUsername_Test -->
+      <class name="Checkout.FillCheckoutDetails_Negative_Test">
+        <test-method is-config="true" signature="launchBrowser(java.lang.String)[pri:0, instance:Checkout.FillCheckoutDetails_Negative_Test@5876a9af]" started-at="2026-10-09T19:03:07 IST" name="launchBrowser" finished-at="2026-10-09T19:03:09 IST" duration-ms="1872" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchBrowser -->
+        <test-method signature="fillCheckoutDetailsNegativeTest()[pri:0, instance:Checkout.FillCheckoutDetails_Negative_Test@5876a9af]" started-at="2026-10-09T19:03:09 IST" name="fillCheckoutDetailsNegativeTest" finished-at="2026-10-09T19:03:15 IST" duration-ms="6111" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[Error message displayed for invalid checkout data]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- fillCheckoutDetailsNegativeTest -->
+        <test-method is-config="true" signature="closeBrowser()[pri:0, instance:Checkout.FillCheckoutDetails_Negative_Test@5876a9af]" started-at="2026-10-09T19:03:15 IST" name="closeBrowser" finished-at="2026-10-09T19:03:15 IST" duration-ms="230" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closeBrowser -->
+      </class> <!-- Checkout.FillCheckoutDetails_Negative_Test -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
+>>>>>>> 5b7f25652b05f2e95bee78314a22a550c47d4ddd
 </testng-results>

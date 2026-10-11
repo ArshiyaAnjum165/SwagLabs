@@ -12,7 +12,11 @@ import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.Test;
 
+<<<<<<< HEAD
 import objRepo.ProductPage;
+=======
+import ObjectRepo.ProductPage;
+>>>>>>> 5b7f25652b05f2e95bee78314a22a550c47d4ddd
 import baseClass.BaseClass;
 import objRepo.LoginPage;
 import objRepo.CheckoutPage;
@@ -46,7 +50,11 @@ public class FinishCheckout_Test extends BaseClass {
 			// Add product to cart
 			ProductPage productsPage = new ProductPage(driver);
 
+<<<<<<< HEAD
 			Assert.assertTrue(loginPage.isProductsPageDisplayed(), "Products page is not displayed");
+=======
+			Assert.assertTrue(productsPage.isProductsPageDisplayed(), "Products page is not displayed");
+>>>>>>> 5b7f25652b05f2e95bee78314a22a550c47d4ddd
 
 			productsPage.addProductToCart(productName);
 

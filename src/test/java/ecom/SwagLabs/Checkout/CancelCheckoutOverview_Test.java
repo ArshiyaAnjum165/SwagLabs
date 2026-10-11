@@ -12,7 +12,11 @@ import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.Test;
 
+<<<<<<< HEAD
 import objRepo.ProductPage;
+=======
+import ObjectRepo.ProductPage;
+>>>>>>> 5b7f25652b05f2e95bee78314a22a550c47d4ddd
 import baseClass.BaseClass;
 import objRepo.LoginPage;
 import objRepo.CheckoutPage;
@@ -45,7 +49,11 @@ public class CancelCheckoutOverview_Test extends BaseClass {
 			// Add product to cart
 			ProductPage productsPage = new ProductPage(driver);
 
+<<<<<<< HEAD
 			Assert.assertTrue(loginPage.isProductsPageDisplayed(), "Products page is not displayed");
+=======
+			Assert.assertTrue(productsPage.isProductsPageDisplayed(), "Products page is not displayed");
+>>>>>>> 5b7f25652b05f2e95bee78314a22a550c47d4ddd
 
 			productsPage.addProductToCart(productName);
 
@@ -76,7 +84,11 @@ public class CancelCheckoutOverview_Test extends BaseClass {
 			Thread.sleep(1000);
 
 			// Verify navigation to Products page
+<<<<<<< HEAD
 			Assert.assertTrue(loginPage.isProductsPageDisplayed(),
+=======
+			Assert.assertTrue(productsPage.isProductsPageDisplayed(),
+>>>>>>> 5b7f25652b05f2e95bee78314a22a550c47d4ddd
 					"Did not navigate to Products page after cancellation");
 
 			Reporter.log("Checkout Overview cancelled successfully", true);

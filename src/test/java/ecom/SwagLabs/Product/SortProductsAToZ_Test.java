@@ -15,8 +15,13 @@ import org.testng.Reporter;
 import org.testng.annotations.Test;
 
 import baseClass.BaseClass;
+<<<<<<< HEAD
 import objRepo.LoginPage;
 import objRepo.ProductPage;
+=======
+import ObjectRepo.LoginPage;
+import ObjectRepo.ProductPage;
+>>>>>>> 5b7f25652b05f2e95bee78314a22a550c47d4ddd
 
 public class SortProductsAToZ_Test extends BaseClass {
 
@@ -36,11 +41,19 @@ public class SortProductsAToZ_Test extends BaseClass {
 
 		Thread.sleep(1000);
 
+<<<<<<< HEAD
 		Assert.assertTrue(loginPage.isProductsPageDisplayed(), "Login failed");
 
 		ProductPage productsPage = new ProductPage(driver);
 
 		productsPage.selectProductsAToZ();
+=======
+		Assert.assertTrue(loginPage.isProductsDisplayed(), "Login failed");
+
+		ProductPage productsPage = new ProductPage(driver);
+
+		productsPage.selectNameAToZ();
+>>>>>>> 5b7f25652b05f2e95bee78314a22a550c47d4ddd
 
 		Thread.sleep(1000);
 

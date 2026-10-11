@@ -12,7 +12,11 @@ import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.Test;
 
+<<<<<<< HEAD
 import objRepo.ProductPage;
+=======
+import ObjectRepo.ProductPage;
+>>>>>>> 5b7f25652b05f2e95bee78314a22a550c47d4ddd
 import baseClass.BaseClass;
 import objRepo.LoginPage;
 import objRepo.CheckoutPage;
@@ -45,7 +49,11 @@ public class BackHome_Test extends BaseClass {
 
 			// Add product
 			ProductPage productsPage = new ProductPage(driver);
+<<<<<<< HEAD
 			Assert.assertTrue(loginPage.isProductsPageDisplayed());
+=======
+			Assert.assertTrue(productsPage.isProductsPageDisplayed());
+>>>>>>> 5b7f25652b05f2e95bee78314a22a550c47d4ddd
 			productsPage.addProductToCart(productName);
 
 			// Open cart and checkout
@@ -78,7 +86,11 @@ public class BackHome_Test extends BaseClass {
 			Thread.sleep(1000);
 
 			// Verify Products page
+<<<<<<< HEAD
 			Assert.assertTrue(loginPage.isProductsPageDisplayed(), "Did not navigate to Products page");
+=======
+			Assert.assertTrue(productsPage.isProductsPageDisplayed(), "Did not navigate to Products page");
+>>>>>>> 5b7f25652b05f2e95bee78314a22a550c47d4ddd
 
 			Reporter.log("Back Home navigation successful", true);
 

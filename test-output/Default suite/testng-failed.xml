@@ -3,6 +3,7 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
+<<<<<<< HEAD
       <class name="ecom.SwagLabs.Product.SortPriceHighToLow_Test">
         <methods>
           <include name="closeBrowser"/>
@@ -10,6 +11,15 @@
           <include name="launchBrowser"/>
         </methods>
       </class> <!-- ecom.SwagLabs.Product.SortPriceHighToLow_Test -->
+=======
+      <class name="Login.UserLoginWithInvalidUsername_Test">
+        <methods>
+          <include name="closeBrowser"/>
+          <include name="userLoginWithInvalidUsername_Test"/>
+          <include name="launchBrowser"/>
+        </methods>
+      </class> <!-- Login.UserLoginWithInvalidUsername_Test -->
+>>>>>>> 5b7f25652b05f2e95bee78314a22a550c47d4ddd
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

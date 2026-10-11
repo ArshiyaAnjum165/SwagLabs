@@ -3,6 +3,7 @@
 <suite name="Suite">
   <test thread-count="5" name="Test">
   <groups>
+<<<<<<< HEAD
 <run>
 <include name = "Integration"></include>
 </run>
@@ -45,6 +46,50 @@
       <class name="ecom.SwagLabs.Product.AddProductToCart_Test"/>
       <class name="ecom.SwagLabs.Footer.X_Test"/>
       <class name="ecom.SwagLabs.HamburgerMenu.LogoutTest"/>
+=======
+            <run>
+                <include name="Integration"/>
+            </run>
+        </groups>
+    <classes>
+      <class name="Product.VerifyAllProducts_Test"/>
+      <class name="HamburgerMenu.LazyLoadTest"/>
+      <class name="Checkout.FinishCheckout_Test"/>
+      <class name="Checkout.CancelCheckout_Test"/>
+      <class name="Footer.X_Test"/>
+      <class name="Checkout.FillCheckoutDetails_Negative_Test"/>
+      <class name="Cart.Checkout_Test"/>
+      <class name="Product.SortPriceHighToLow_Test"/>
+      <class name="HamburgerMenu.CloseMenuTest"/>
+      <class name="Footer.Facebook_Test"/>
+      <class name="Product.VerifyMenuBarVisible_Test"/>
+      <class name="Checkout.FillCheckoutDetails_Test"/>
+      <class name="Footer.LinkedIn_Test"/>
+      <class name="Checkout.GeneratePDFOrder_Test"/>
+      <class name="HamburgerMenu.LogoutTest"/>
+      <class name="Cart.ContinueShopping_Test"/>
+      <class name="HamburgerMenu.AllItemsTest"/>
+      <class name="Product.SortProductsAToZ_Test"/>
+      <class name="HamburgerMenu.ResetAppStateTest"/>
+      <class name="HamburgerMenu.DynamicCatalogTest"/>
+      <class name="Checkout.VerifyThankYouPage_Test"/>
+      <class name="HamburgerMenu.SliderTest"/>
+      <class name="Login.UserLoginWithValidCredentials_Test"/>
+      <class name="Checkout.BackHome_Test"/>
+      <class name="HamburgerMenu.AboutTest"/>
+      <class name="Product.AddProductToCart_Test"/>
+      <class name="Cart.ProductAddedToCart_Test"/>
+      <class name="Login.UserLoginLogout_Test"/>
+      <class name="Product.SortProductsZToA_Test"/>
+      <class name="Cart.RemoveProductFromCart_Test"/>
+      <class name="Login.UserLoginWithInvalidUsername_Test"/>
+      <class name="Cart.OpenCartSection_Test"/>
+      <class name="HamburgerMenu.SpinnerTest"/>
+      <class name="Checkout.CancelCheckoutOverview_Test"/>
+      <class name="HamburgerMenu.OpenMenuTest"/>
+      <class name="HamburgerMenu.ResetAppStateActionTest"/>
+      <class name="Product.SortPriceLowToHigh_Test"/>
+>>>>>>> 5b7f25652b05f2e95bee78314a22a550c47d4ddd
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

@@ -12,7 +12,11 @@ import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.Test;
 
+<<<<<<< HEAD
 import objRepo.ProductPage;
+=======
+import ObjectRepo.ProductPage;
+>>>>>>> 5b7f25652b05f2e95bee78314a22a550c47d4ddd
 import baseClass.BaseClass;
 import objRepo.LoginPage;
 import objRepo.CartPage;
@@ -39,6 +43,11 @@ public class ContinueShopping_Test extends BaseClass {
 			// Add product to cart
 			ProductPage productsPage = new ProductPage(driver);
 
+<<<<<<< HEAD
+=======
+			Assert.assertTrue(productsPage.isProductsPageDisplayed(), "Products page is not displayed");
+
+>>>>>>> 5b7f25652b05f2e95bee78314a22a550c47d4ddd
 			Assert.assertFalse(productName.isEmpty(), "Product name is empty in Excel");
 
 			productsPage.addProductToCart(productName);
@@ -56,6 +65,13 @@ public class ContinueShopping_Test extends BaseClass {
 
 			Thread.sleep(1000);
 
+<<<<<<< HEAD
+=======
+			// Verify navigation to Products page
+			Assert.assertTrue(productsPage.isProductsPageDisplayed(),
+					"Continue Shopping did not navigate to Products page");
+
+>>>>>>> 5b7f25652b05f2e95bee78314a22a550c47d4ddd
 			Reporter.log("Continue Shopping clicked successfully", true);
 
 		} finally {

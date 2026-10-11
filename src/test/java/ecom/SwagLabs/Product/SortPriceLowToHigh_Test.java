@@ -15,8 +15,13 @@ import org.testng.Reporter;
 import org.testng.annotations.Test;
 
 import baseClass.BaseClass;
+<<<<<<< HEAD
 import objRepo.LoginPage;
 import objRepo.ProductPage;
+=======
+import ObjectRepo.LoginPage;
+import ObjectRepo.ProductPage;
+>>>>>>> 5b7f25652b05f2e95bee78314a22a550c47d4ddd
 
 public class SortPriceLowToHigh_Test extends BaseClass {
 
@@ -36,7 +41,11 @@ public class SortPriceLowToHigh_Test extends BaseClass {
 
 		Thread.sleep(1000);
 
+<<<<<<< HEAD
 		Assert.assertTrue(loginPage.isProductsPageDisplayed(), "Login failed");
+=======
+		Assert.assertTrue(loginPage.isProductsDisplayed(), "Login failed");
+>>>>>>> 5b7f25652b05f2e95bee78314a22a550c47d4ddd
 
 		ProductPage productsPage = new ProductPage(driver);
 
