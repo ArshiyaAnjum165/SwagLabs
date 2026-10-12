@@ -3,11 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="ecom.SwagLabs.Checkout.CancelCheckout_Test">
+      <class name="ecom.SwagLabs.HamburgerMenu.ResetAppStateTest">
         <methods>
-          <include name="cancelCheckoutTest"/>
+          <include name="closeBrowser"/>
+          <include name="resetAppStateTest"/>
+          <include name="launchBrowser"/>
         </methods>
-      </class> <!-- ecom.SwagLabs.Checkout.CancelCheckout_Test -->
+      </class> <!-- ecom.SwagLabs.HamburgerMenu.ResetAppStateTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

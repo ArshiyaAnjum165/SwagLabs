@@ -1,4 +1,3 @@
-
 package ecom.SwagLabs.HamburgerMenu;
 
 import java.io.FileInputStream;
@@ -6,7 +5,6 @@ import java.io.FileInputStream;
 import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
-
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.Test;
@@ -20,12 +18,14 @@ public class ResetAppStateTest extends BaseClass {
     @Test(groups = { "Functional" })
     public void resetAppStateTest() throws Exception {
 
-        FileInputStream fis =
-                new FileInputStream("./src/test/resources/TestData.xlsx");
+        FileInputStream fis = new FileInputStream(
+                "./src/test/resources/TestData.xlsx");
 
-        Workbook wb = WorkbookFactory.create(fis);
+        Workbook wb = null;
 
         try {
+            wb = WorkbookFactory.create(fis);
+
             DataFormatter formatter = new DataFormatter();
 
             String un = formatter.formatCellValue(
@@ -43,13 +43,17 @@ public class ResetAppStateTest extends BaseClass {
             // Verify successful login
             Assert.assertTrue(
                     loginPage.isProductsPageDisplayed(),
-                    "Login failed");
+                    "Login failed - Products page is not displayed");
+
+            Reporter.log("Login successful", true);
 
             // Open hamburger menu
             HamburgerMenuPage menuPage =
                     new HamburgerMenuPage(driver);
 
             menuPage.clickMenuButton();
+
+            Reporter.log("Hamburger menu opened", true);
 
             // Verify Reset App State option
             Assert.assertTrue(
@@ -60,8 +64,13 @@ public class ResetAppStateTest extends BaseClass {
                     "Reset App State option is displayed", true);
 
         } finally {
-            wb.close();
-            fis.close();
+            try {
+                if (wb != null) {
+                    wb.close();
+                }
+            } finally {
+                fis.close();
+            }
         }
     }
 }

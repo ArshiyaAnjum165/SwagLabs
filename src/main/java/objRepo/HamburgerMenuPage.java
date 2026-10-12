@@ -1,102 +1,164 @@
+
 package objRepo;
+
+import java.time.Duration;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class HamburgerMenuPage {
 
-	WebDriver driver;
+    WebDriver driver;
+    WebDriverWait wait;
 
-	public HamburgerMenuPage(WebDriver driver) {
-		this.driver = driver;
-		PageFactory.initElements(driver, this);
-	}
+    public HamburgerMenuPage(WebDriver driver) {
+        this.driver = driver;
+        this.wait = new WebDriverWait(
+                driver, Duration.ofSeconds(10));
 
-	@FindBy(id = "react-burger-menu-btn")
-	private WebElement menuButton;
+        PageFactory.initElements(driver, this);
+    }
 
-	@FindBy(id = "react-burger-cross-btn")
-	private WebElement closeMenuButton;
+    @FindBy(id = "react-burger-menu-btn")
+    private WebElement menuButton;
 
-	@FindBy(id = "inventory_sidebar_link")
-	private WebElement allItems;
+    @FindBy(id = "react-burger-cross-btn")
+    private WebElement closeMenuButton;
 
-	@FindBy(xpath = "//a[normalize-space()='Dynamic Catalog']")
-	private WebElement dynamicCatalog;
+    @FindBy(id = "inventory_sidebar_link")
+    private WebElement allItems;
 
-	@FindBy(xpath = "//a[normalize-space()='Lazy Load']")
-	private WebElement lazyLoad;
+    @FindBy(xpath = "//a[normalize-space()='Dynamic Catalog']")
+    private WebElement dynamicCatalog;
 
-	@FindBy(xpath = "//a[normalize-space()='Spinner']")
-	private WebElement spinner;
+    @FindBy(xpath = "//a[normalize-space()='Lazy Load']")
+    private WebElement lazyLoad;
 
-	@FindBy(xpath = "//a[normalize-space()='Slider']")
-	private WebElement slider;
+    @FindBy(xpath = "//a[normalize-space()='Spinner']")
+    private WebElement spinner;
 
-	@FindBy(id = "about_sidebar_link")
-	private WebElement about;
+    @FindBy(xpath = "//a[normalize-space()='Slider']")
+    private WebElement slider;
 
-	@FindBy(id = "logout_sidebar_link")
-	private WebElement logout;
+    @FindBy(id = "about_sidebar_link")
+    private WebElement about;
 
-	@FindBy(id = "reset_sidebar_link")
-	private WebElement resetAppState;
+    @FindBy(id = "logout_sidebar_link")
+    private WebElement logout;
 
-	public void clickMenuButton() {
-		menuButton.click();
-	}
+    @FindBy(id = "reset_sidebar_link")
+    private WebElement resetAppState;
 
-	public void clickCloseMenu() {
-		closeMenuButton.click();
-	}
+    // Click hamburger menu
+    public void clickMenuButton() {
+        wait.until(ExpectedConditions.elementToBeClickable(
+                menuButton)).click();
+    }
 
-	public void clickAllItems() {
-		allItems.click();
-	}
+    // Close hamburger menu
+    public void clickCloseMenu() {
+        wait.until(ExpectedConditions.elementToBeClickable(
+                closeMenuButton)).click();
+    }
 
-	public void clickDynamicCatalog() {
-		dynamicCatalog.click();
-	}
+    // Click All Items
+    public void clickAllItems() {
+        wait.until(ExpectedConditions.elementToBeClickable(
+                allItems)).click();
+    }
 
-	public void clickLazyLoad() {
-		lazyLoad.click();
-	}
+    // Click Dynamic Catalog
+    public void clickDynamicCatalog() {
+        wait.until(ExpectedConditions.elementToBeClickable(
+                dynamicCatalog)).click();
+    }
 
-	public void clickSpinner() {
-		spinner.click();
-	}
+    // Click Lazy Load
+    public void clickLazyLoad() {
+        wait.until(ExpectedConditions.elementToBeClickable(
+                lazyLoad)).click();
+    }
 
-	public void clickSlider() {
-		slider.click();
-	}
+    // Click Spinner
+    public void clickSpinner() {
+        wait.until(ExpectedConditions.elementToBeClickable(
+                spinner)).click();
+    }
 
-	public boolean isAboutDisplayed() {
-		return about.isDisplayed();
-	}
+    // Click Slider
+    public void clickSlider() {
+        wait.until(ExpectedConditions.elementToBeClickable(
+                slider)).click();
+    }
 
-	public boolean isResetAppStateDisplayed() {
-		return resetAppState.isDisplayed();
-	}
+    // Verify About is displayed
+    public boolean isAboutDisplayed() {
+        try {
+            return wait.until(
+                    ExpectedConditions.visibilityOf(about))
+                    .isDisplayed();
+        } catch (org.openqa.selenium.TimeoutException e) {
+            return false;
+        }
+    }
 
-	public boolean isLogoutDisplayed() {
-		return logout.isDisplayed();
-	}
+    // Verify Reset App State is displayed
+    public boolean isResetAppStateDisplayed() {
+        try {
+            return wait.until(
+                    ExpectedConditions.visibilityOf(resetAppState))
+                    .isDisplayed();
+        } catch (org.openqa.selenium.TimeoutException e) {
+            return false;
+        }
+    }
 
-	public boolean isAllItemsDisplayed() {
-		return allItems.isDisplayed();
-	}
+    // Verify Logout is displayed
+    public boolean isLogoutDisplayed() {
+        try {
+            return wait.until(
+                    ExpectedConditions.visibilityOf(logout))
+                    .isDisplayed();
+        } catch (org.openqa.selenium.TimeoutException e) {
+            return false;
+        }
+    }
 
-	public void resetAppStateClick() {
-		resetAppState.click();
-	}
+    // Verify All Items is displayed
+    public boolean isAllItemsDisplayed() {
+        try {
+            return wait.until(
+                    ExpectedConditions.visibilityOf(allItems))
+                    .isDisplayed();
+        } catch (org.openqa.selenium.TimeoutException e) {
+            return false;
+        }
+    }
 
-	public void clickLogout() {
-		logout.click();
-	}
+    // Click Reset App State
+    public void resetAppStateClick() {
+        wait.until(ExpectedConditions.elementToBeClickable(
+                resetAppState)).click();
+    }
 
-	public boolean isDynamicCatalogDisplayed() {
-		return dynamicCatalog.isDisplayed();
-	}
+    // Click Logout
+    public void clickLogout() {
+        wait.until(ExpectedConditions.elementToBeClickable(
+                logout)).click();
+    }
+
+    // Verify Dynamic Catalog is displayed
+    public boolean isDynamicCatalogDisplayed() {
+        try {
+            return wait.until(
+                    ExpectedConditions.visibilityOf(dynamicCatalog))
+                    .isDisplayed();
+        } catch (org.openqa.selenium.TimeoutException e) {
+            return false;
+        }
+    }
 }
